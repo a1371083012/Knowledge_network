@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello Caching World!</title>
+  </head>
+  <body>
+    <!-- Image -->
+    <img src="./image/1.png" alt="">
+    <img src="./image/2.png" alt="">
+    <img src="./image/lodash.png" alt="">
+    <script>
+      /* 判断当前浏览器是否支持serviceWorker */
+        if ('serviceWorker' in navigator) {
+          console.log('支持serviceWorker！');
+          /* 在浏览器页面加载完后再注册service worker */
+          window.addEventListener('load', function(){
+            /* scope 参数是可选的，可以用来指定你想让 service worker 控制的内容的子目录。 在这个例子里，我们指定了 '/'，表示 根网域下的所有内容。这也是默认值。 */
+            navigator.serviceWorker.register('./serviceWorker.js', {scope: '/'}).then(registration =>{
+              console.log('注册成功！');
+            }).catch(()=>{
+              console.log('注册失败！');
+            });
+          })
+        }else{
+          console.log('不支持serviceWorker！');
+        }
+    </script>
+  </body>
+</html>
