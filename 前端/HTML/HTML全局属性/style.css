@@ -1,0 +1,20 @@
+ul,li{
+    margin: 0;padding: 0;
+}
+#menu{
+    background-color: #fff;
+    list-style: none;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    position: absolute;
+    display: none;
+}
+#menu li{
+    border-bottom: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+#menu li:hover{
+    background-color: #ccc;
+}

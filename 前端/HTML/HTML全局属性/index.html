@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- lang：决定全局元素使用英语语言 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- id：元素id，文档内唯一标识 -->
+    <!-- class：为元素设置类标识 -->
+    <!-- style：元素的行内css样式 -->
+    <!-- title：元素相关的建议信息 -->
+    <!-- data-*：为元素增加自定义属性 -->
+    <p id="number" class="p-class" style="font-size: 24px;" title="num" data-state="online">123</p>
+    <p>普通文本</p>
+    <!-- draggable：元素是否可拖拽 -->
+    <p draggable="true">可拖拽文本</p>
+    <!-- contenteditable：指定元素内容是否可编辑 -->
+    <p contenteditable="true">可编辑文本</p>
+    <!-- accesskey：设置元素快捷键 -->
+    <input type="checkbox" accesskey="c"/>Control + Alt(Option) + c 快捷可触发
+    <!-- contextmenu：自定义鼠标右键弹出菜单内容 -->
+    <p id="contextmenu" contextmenu="true">可右键弹出菜单文本</p>
+    <!-- dir：元素文本方向 -->
+    <p dir="rtl">设置了文本反方向</p>
+
+    <!-- 菜单 -->
+    <ul id="menu">
+        <li>你点击了右键</li>
+        <li>触发了contextmenu方法</li>
+        <li>弹出了该菜单</li>
+    </ul>
+</body>
+<script src="./test.js"></script>
+</html>
