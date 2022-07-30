@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+/* 导航栏 */
+nav ul{
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    border-bottom: 1px solid #eee;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+}
+#canvas{
+    flex: 1;
+    width: 100vw;
+}
+
+/* 功能按键 */
+.btn, .lineWidth, .color{
+    cursor: pointer;
+    width: 110px;
+    height: 50px;
+    border: 1px solid #999;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 50px;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn:hover, .lineWidth:hover, .color:hover{
+    background-color: rgb(0, 186, 115);
+    border: rgb(0, 98, 60);
+    color: #fff;
+}
+.btn:hover img{
+    filter: drop-shadow(#fff 990px 0);
+    transform: translateX(-990px);
+    overflow:hidden;
+}
+.btn img{
+    width: 28px;
+    height: 28px;
+    margin-right: 5px;
+}
+.btn.active{
+    box-shadow: 0 0 20px deepskyblue;
+}
+/* 线段粗细 */
+.lineWidth{
+    width: 50px;
+}
+#lineWidth1 span{
+    width: 8px;
+    height: 8px;
+    background-color: #999;
+    border-radius: 10px;
+}
+#lineWidth2 span{
+    width: 14px;
+    height: 14px;
+    background-color: #999;
+    border-radius: 10px;
+}
+#lineWidth3 span{
+    width: 20px;
+    height: 20px;
+    background-color: #999;
+    border-radius: 10px;
+}
+.lineWidth:hover span{
+    background-color: #fff !important;
+}
+.lineActive{
+    box-shadow: 0 0 20px rgb(255, 102, 0);
+}
+/* 笔触颜色 */
+.color{
+    width: 80px;
+}

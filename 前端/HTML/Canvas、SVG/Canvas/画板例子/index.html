@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="btn active" id="pen"><img src="./images/画笔.svg" alt="">画笔</li>
+            <li class="btn" id="rect"><img src="./images/矩形.svg" alt="">矩形</li>
+            <li class="btn" id="arc"><img src="./images/圆形.svg" alt="">圆形</li>
+            <li class="btn" id="eraser"><img src="./images/橡皮擦.svg" alt="">橡皮擦</li>
+            <li class="btn" id="empty"><img src="./images/垃圾桶.svg" alt="">清空</li>
+            <li class="btn" id="download"><img src="./images/下载.svg" alt="">下载</li>
+            <a href="" download="download" id="downloadA" style="display: none;"></a>
+            <li class="lineWidth lineActive" id="lineWidth1"><span></span></li>
+            <li class="lineWidth" id="lineWidth2"><span></span></li>
+            <li class="lineWidth" id="lineWidth3"><span></span></li>
+            <li class="color" id="color">
+                <input type="color" name="" id="penColor">
+            </li>
+        </ul>
+    </nav>
+    <canvas id="canvas"> </canvas>
+</body>
+<script src="./draw.js"></script>
+</html>
