@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.block1, .block2{
+    width: 100vw;
+    height: 300px;
+    position: relative;
+}
+.block1{
+    background-color: rgb(165, 165, 165);
+}
+.block2{
+    background-color: rgb(120, 120, 120);
+}
+p{
+    position: absolute;
+    font-size: 48px;
+    width: 200px;
+    height: 80px;
+    top: calc(50% - 40px);
+    right: 0;
+}
+.display{
+    width: 180px;
+    height: 180px;
+    background-color: rgb(255, 0, 0);
+    display: none;
+}
+.display-child{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(238, 255, 0);
+    display: block;
+}
+.display-next{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(0, 179, 250);
+    display: block;
+}
+.visibility{
+    width: 180px;
+    height: 180px;
+    background-color: rgb(255, 0, 0);
+    visibility: hidden;
+}
+.visibility-child{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(238, 255, 0);
+    visibility: visible;
+}
+.visibility-next{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(0, 179, 250);
+}
