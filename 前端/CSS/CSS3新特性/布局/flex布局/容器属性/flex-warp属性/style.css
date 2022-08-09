@@ -1,0 +1,23 @@
+#main {
+    border: 1px solid #CCC;
+    padding: 5px;
+}
+.nowrap, .wrap, .wrap_reverse {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+.nowrap {
+    flex-wrap: nowrap;
+}
+.wrap {
+    flex-wrap: wrap;
+}
+.wrap_reverse {
+    flex-wrap: wrap-reverse;
+}
+.nowrap div, .wrap div, .wrap_reverse div {
+    width: 70px;
+    height: 50px;
+    border: 1px solid black;
+}

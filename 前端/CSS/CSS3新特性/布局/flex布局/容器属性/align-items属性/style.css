@@ -1,0 +1,26 @@
+.flex {
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: 10px;
+}
+.flex div {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+}
+.flex-start {
+    align-items: flex-start;
+}
+.flex-end {
+    align-items: flex-end;
+}
+.center {
+    align-items: center;
+}
+.space-between {
+    align-items: baseline;
+}
+.space-around  {
+    align-items: stretch;
+}

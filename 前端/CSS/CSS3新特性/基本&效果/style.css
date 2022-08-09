@@ -1,0 +1,53 @@
+.div{
+    width: 120px;
+    height: 120px;
+    /* 渐变 */
+    background: linear-gradient(to right, #26ff00, #003cff 20%, #d80000);
+    /* 圆角 */
+    border-radius: 2em 1em 4em / 0.5em 3em;
+    /* 盒子阴影 */
+    box-shadow: 4px 4px 10px #000000 inset, -4px -4px 10px #000000 inset;
+    /* 倒影 */
+    -webkit-box-reflect: below 10px -webkit-linear-gradient(transparent,transparent 50%,rgba(0,0,0,.8));
+}
+p{
+    margin-top: 70px;
+    width: 70px;
+    font-size: 40px;
+    white-space:nowrap; 
+	overflow:hidden; 
+    /* 文本阴影 */
+    text-shadow: 4px 4px 2px #000000;
+    /* 颜色透明度 */
+    color: rgba(0, 142, 142, .8);
+    /* 文字装饰 */
+    -webkit-text-stroke: 2px #ff0000;
+    /* 文字溢出处理 */
+    text-overflow: ellipsis;
+}
+text{
+    font-size: 40px;
+    margin: 120px;
+    border: 27px solid;
+    /* 个性化字体引用 */
+    font-family:myFirstFont;
+    /* 边框效果 */
+    border-image-source: url(./borderImage.png);
+    border-image-slice: 27;
+    border-image-outset: 25px;
+    border-image-repeat: round repeat;
+}
+
+/* 个性化字体 */
+@font-face{
+	font-family: myFirstFont;
+	src: url('Sansation_Light.ttf')
+		,url('Sansation_Light.eot'); /* IE9 */
+}
+
+body{
+    background:url(./1.png);
+	background-repeat:no-repeat;
+    /* 背景效果 */
+	background-size:80px 60px;
+}

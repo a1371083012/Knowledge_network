@@ -1,0 +1,24 @@
+.flex {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-end;
+    border: 1px solid #CCC;
+}
+.flex div {
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+}
+.flex div:nth-child(2) {
+    flex:0;
+}
+.flex div:nth-child(4) {
+    flex:1 1 auto;
+}
+/* 这个等同于上面的css样式 */
+.flex div:nth-child(4) {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    /* 等同于 flex:1 1 auto; */
+}

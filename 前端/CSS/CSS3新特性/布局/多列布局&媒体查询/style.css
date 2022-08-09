@@ -1,0 +1,15 @@
+/* 多列布局 */
+.newspaper
+{
+    margin-top: 50px;
+	-moz-column-count:3; /* Firefox */
+	-webkit-column-count:3; /* Safari and Chrome */
+	column-count:3;
+}
+
+/* 媒体查询 */
+@media (max-width: 300px) and (min-width: 200px) {
+    body {
+        background-color:lightblue;
+    }
+}
