@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.header{
+    height: 100px;
+    background-color: #CC0066;
+}
+.footer{
+    clear: both;
+    height: 100px;
+    background-color: #7F00FF;
+}
+.container{
+    display: flex;
+    height: calc(100vh - 200px);
+}
+.left{
+    width: 100px;
+    height: 100%;
+    background: #EB595F;
+    order: -1;
+}
+.main{
+    flex: 1;
+    height: 100%;
+    background: #2F8EED;
+}
+.right{
+    width: 200px;
+    height: 100%;
+    background: #E68A2E;
+}

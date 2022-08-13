@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: grid;
+    grid-template: 'header header header' 100px 
+        'left main right' calc(100vh - 200px) 
+        'footer footer footer' 100px / 100px 1fr 200px;
+}
+.header{
+    grid-area: header;
+    background-color: #CC0066;
+}
+.footer{
+    grid-area: footer;
+    background-color: #7F00FF;
+}
+.left{
+    grid-area: left;
+    background: #EB595F;
+}
+.main{
+    grid-area: main;
+    background: #2F8EED;
+}
+.right{
+    grid-area: right;
+    background: #E68A2E;
+}

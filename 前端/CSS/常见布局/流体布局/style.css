@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.left {
+    float: left;
+    width: 100px;
+    height: 100vh;
+    background: #EB595F;
+}
+.main {
+    margin-left: 100px;
+    margin-right: 200px;
+    height: 100vh;
+    background: #2F8EED;
+}
+.right {
+    float: right;
+    width: 200px;
+    height: 100vh;
+    background: #E68A2E;
+}
