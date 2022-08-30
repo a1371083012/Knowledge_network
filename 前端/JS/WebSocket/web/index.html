@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 初始化WebSocket的实例
+        var ws = new WebSocket("ws://127.0.0.1:8080/");     
+      
+        var user = {name: "张三", sex: "男"};
+        // 监听开启事件
+        ws.onopen = function() {
+            console.log('WebSocket已开启');
+            // 向服务端发送Json格式数据
+            ws.send(JSON.stringify(user));
+        };
+        // 监听服务端回传的数据
+        ws.onmessage = function (evt) {
+            console.log(evt.data);
+        };
+        // 监听关闭事件
+        ws.onclose = function() {    
+            console.log('WebSocket已关闭');
+        };    
+        // 监听错误事件
+        ws.onerror = function(err) {   
+            console.log('WebSocket发生错误');
+        };
+    </script>
+</body>
+</html>
