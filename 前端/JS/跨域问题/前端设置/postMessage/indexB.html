@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 监听消息
+        window.addEventListener('message', function(e){
+            if (e.origin !== "http://127.0.0.1:5501") {  // 验证消息来源地址
+                return;
+            }
+                // 作出对应处理
+            this.document.body.innerHTML = "从"+ e.origin +"收到消息： " + e.data;
+                // 发送消息
+            e.source.postMessage('来自8080的消息', e.origin);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 监听消息
+        window.addEventListener('message', function(e){
+            console.log(e.data)
+        })
+        // 新开一个浏览器
+        let win = window.open("http://127.0.0.1:8080");
+        // 发送消息
+        send = ()=>{
+            win.postMessage('来自5001的消息', 'http://127.0.0.1:8080/getMethod');
+        }
+    </script>
+</body>
+</html>
