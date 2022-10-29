@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+}
+#box, #box2{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    background-color: blueviolet;
+}
+#box2{
+    left: 300px;
+    background-color: aqua;
+}
