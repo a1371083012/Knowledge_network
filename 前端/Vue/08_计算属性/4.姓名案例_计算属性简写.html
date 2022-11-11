@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>姓名案例_计算属性简写</title>
+</head>
+
+<body>
+
+  <!-- 
+    
+  -->
+
+  <!-- 准备好一个容器 -->
+  <div id="root">
+    姓：<input type="text" v-model="firstName"> <br><br>
+    名：<input type="text" v-model="lastName"> <br><br>
+    姓名：<span>{{fullName}}</span>
+    姓名：<span>{{fullName}}</span>
+    姓名：<span>{{fullName}}</span>
+    姓名：<span>{{fullName}}</span>
+  </div>
+
+  <!-- 引入Vue -->
+  <script src="../js/vue.js"></script>
+
+  <script>
+    Vue.config.productionTip = false; //阻止 vue 在启动时生成生产提示。
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        firstName: '张',
+        lastName: '三',
+      },
+      computed: {
+        /* 完整写法 */
+        // fullName:{
+        //   //get有什么作用？当有人读取fullName时，get就会被调用，且返回值就作为fullName的值
+        //   //get什么时候调用？1.初次读取fullName时。2.所依赖的数据发生变化时
+        //   get(){
+        //     console.log("get被调用了");
+        //     return this.firstName.slice(0, 3) + this.lastName.slice(0, 3);
+        //   },
+        //   //set什么时候调用？1.当fullName被修改时。
+        //   set(value){
+        //     console.log("set被调用了");
+        //     this.firstName = value.slice(0,1);
+        //     this.lastName = value.substr(1,value.lenght);
+        //   }
+        // }
+
+        /* 简写 */
+        fullName() {
+          console.log("get被调用了");
+          return this.firstName.slice(0, 3) + this.lastName.slice(0, 3);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
