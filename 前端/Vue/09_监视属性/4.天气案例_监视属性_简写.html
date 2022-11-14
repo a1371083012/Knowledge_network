@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>天气案例_深度监视</title>
+</head>
+
+<body>
+
+  <!--
+    
+  -->
+
+  <!-- 准备好一个容器 -->
+  <div id="root">
+    <h2>今天天气很{{info}}</h2>
+    <button @click="changeWeather">切换天气</button>
+  </div>
+
+  <!-- 引入Vue -->
+  <script src="../js/vue.js"></script>
+
+  <script>
+    Vue.config.productionTip = false; //阻止 vue 在启动时生成生产提示。
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        isHot: true,
+      },
+      methods: {
+        changeWeather(){
+          this.isHot = !this.isHot;
+        }
+      },
+      computed: {
+        info() {
+          return this.isHot ? '炎热' : '凉爽';
+        }
+      },
+      /* 第一种写法 */
+      watch: {
+        /*  普通写法 */
+        isHot: {
+          handler(value, pre){
+            console.log('isHot被修改了', value, pre);
+          },
+        },
+
+        /* 简写 */
+        // isHot(value, pre){
+        //   console.log('isHot被修改了', value, pre);
+        // },
+      }
+    })
+
+    /* 第二种写法 */
+    /* 普通写法 */
+    // vm.$watch('isHot', {
+    //   handler(value, pre){
+    //     console.log('isHot被修改了', value, pre);
+    //   },
+    //   immediate: true, // 是否初始化时就执行一次
+    // })
+
+    /* 简写 */
+    // vm.$watch('isHot', function(value, pre){
+    //   console.log('isHot被修改了', value, pre);
+    // })
+  </script>
+</body>
+
+</html>
