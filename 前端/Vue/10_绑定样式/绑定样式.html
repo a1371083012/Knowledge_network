@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>绑定样式</title>
+  <style>
+    .basic{
+      height: 200px;
+      width: 100%;
+      border: 2px solid #000000;
+    }
+
+    .happy{
+      background-image: linear-gradient(45deg, red, yellow);
+      border-color: #ff0000;
+    }
+    .sad{
+      background-image: linear-gradient(45deg, rgb(50, 50, 50), rgb(214, 214, 214));
+      border-color: #22ff00;
+    }
+    .normal{
+      background-image: linear-gradient(45deg, rgb(0, 223, 231),rgb(4, 0, 255));
+      border-color: #002aff;
+    }
+
+    .style1{
+      background-image: linear-gradient(45deg, rgb(0, 245, 78), rgb(253, 0, 194));
+    }
+    .style2{
+      font-size: 70px;
+    }
+    .style3{
+      border-radius: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--
+    绑定样式：
+      1. class样式
+        写法:class="xxx" xxx可以是字符串、对象、数组。
+          字符串写法适用于：类名不确定，要动态获取。
+          对象写法适用于：要绑定多个样式，个数不确定，名字也不确定。
+          数组写法适用于：要绑定多个样式，个数确定，名字也确定，但不确定用不用。
+      2. style样式
+        :style="{fontsize: xxx}"其中xxx是动态值。
+        :style="[a,b]"其中a、b是样式对象。
+  -->
+
+  <!-- 准备好一个容器 -->
+  <div id="root">
+    <!-- 绑定class样式 - 字符串写法. 适用于：样式的类名不确定，需要动态指定 -->
+    <div class="basic" :class="mood" @click="changeMood">{{name}}</div>
+    <!-- 绑定class样式 - 数组写法. 适用于：要绑定的样式个数不确定、名字也不确定 -->
+    <div class="basic" :class="classArr" @click="changeState">{{name}}</div>
+    <!-- 绑定class样式 - 对象写法. 适用于：要绑定的样式个数确定、名字也确定，但要动态决定用不用 -->
+    <div class="basic" :class="classObj">{{name}}</div>
+
+    <!-- 绑定style样式 - 数组写法 -->
+    <div class="basic" :style="styleArr">{{name}}</div>
+    <!-- 绑定style样式 - 对象写法 -->
+    <div class="basic" :style="styleObj1">{{name}}</div>
+  </div>
+
+  <!-- 引入Vue -->
+  <script src="../js/vue.js"></script>
+
+  <script>
+    Vue.config.productionTip = false; //阻止 vue 在启动时生成生产提示。
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        name: '张三',
+        mood: 'normal',
+        classArr: ['style1', 'style2', 'style3'],
+        classObj: {
+          style1:false,
+          style2:false,
+        },
+        styleArr: [
+          {
+            fontSize: '40px',
+          },{
+            backgroundColor: 'yellow',
+            color: 'red',
+          }
+        ],
+        styleObj1: {
+          fontSize: '40px',
+        },
+        styleObj2: {
+          backgroundColor: 'yellow',
+          color: 'red',
+        },
+      },
+      methods: {
+        changeMood(){
+          const arr = ['happy', 'sad', 'normal']
+          this.mood = arr[Math.floor(Math.random()*3)];
+        },
+        changeState(){
+          this.classArr.shift();
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>
