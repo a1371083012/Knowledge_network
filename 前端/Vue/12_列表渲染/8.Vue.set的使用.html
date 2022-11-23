@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.set的使用</title>
+</head>
+
+<body>
+
+
+  <!-- 准备好一个容器 -->
+  <div id="root">
+    <h2>学校信息</h2>
+    <h2>学校名称：{{name}}</h2>
+    <h2>学校地址：{{address}}</h2>
+    <h2>校长：{{leader}}</h2>
+    <hr>
+    <h2>学生信息</h2>
+    <button @click="addSex">添加一个性别</button>
+    <h2>学生姓名：{{student.name}}</h2>
+    <h2 v-if="student.sex">学生性别：{{student.sex}}</h2>
+    <h2>学生年龄：真实{{student.age.rAge}}，对外{{student.age.sAge}}</h2>
+    <h2>朋友们</h2>
+    <ul>
+      <li v-for="(f, index) in student.friends" :key="index">
+        {{f.name}}--{{f.age}}
+      </li>
+    </ul>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    Vue.config.productionTip = false; //阻止Vue在启动时生成生产提示
+    
+    const vm = new Vue({
+      el: '#root',
+      data:{
+        name: '北京大学',
+        address: '北京',
+        leader: '张三',
+        student: {
+          name: '小明',
+          age: {
+            rAge:40,
+            sAge:29,
+          },
+          friends: [
+            {name: '小红', age:20},
+            {name: '小光', age:35}
+          ]
+        }
+      },
+      methods:{
+        addSex(){
+          /* 第一种写法 */
+          // Vue.set(this.student, 'sex', '男');
+
+          /* 第二种写法 */
+          this.$set(this.student, 'sex', '男');
+        }
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

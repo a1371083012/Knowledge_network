@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>列表过滤</title>
+</head>
+
+<body>
+
+  <!-- 
+  -->
+
+  <!-- 准备好一个容器 -->
+  <div id="root">
+    <!-- 遍历数组 -->
+    <h2>人员列表（遍历数组）</h2>
+
+    <!-- 使用methods实现 -->
+    <!-- <input type="text" placeholder="请输入名字" @keyup="find"> -->
+    
+    <!-- 使用computed、watch实现 -->
+    <input type="text" placeholder="请输入名字" v-model="keyWord">
+
+    <ul>
+      <li v-for="(p, index) in personsList" :key="p.id">
+        姓名：{{p.name}}，年龄：{{p.age}}，性别：{{p.sex}}
+      </li>
+    </ul>
+  </div>
+
+  <!-- 引入Vue -->
+  <script src="../js/vue.js"></script>
+
+  <script>
+    Vue.config.productionTip = false; //阻止 vue 在启动时生成生产提示。
+
+    // methods实现
+    /* const vm = new Vue({
+      el: '#root',
+      data: {
+        persons: [
+          { id: '001', name: '马冬梅', age: 18, sex:'女' },
+          { id: '002', name: '周冬雨', age: 19, sex:'女' },
+          { id: '003', name: '周杰伦', age: 20, sex:'男' },
+          { id: '003', name: '温兆伦', age: 21, sex:'男' },
+        ],
+        personsList: [
+          { id: '001', name: '马冬梅', age: 18, sex:'女' },
+          { id: '002', name: '周冬雨', age: 19, sex:'女' },
+          { id: '003', name: '周杰伦', age: 20, sex:'男' },
+          { id: '003', name: '温兆伦', age: 21, sex:'男' },
+        ],
+      },
+      methods: {
+        find(e){
+          this.personsList= this.persons.filter((p)=>{
+            return p.name.indexOf(e.target.value) !== -1;
+          })
+        }
+      }
+    }) */
+
+    // computed实现（最优）
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        keyWord: '',
+        persons: [
+          { id: '001', name: '马冬梅', age: 18, sex:'女' },
+          { id: '002', name: '周冬雨', age: 19, sex:'女' },
+          { id: '003', name: '周杰伦', age: 20, sex:'男' },
+          { id: '004', name: '温兆伦', age: 21, sex:'男' },
+        ],
+      },
+      computed: {
+        personsList(){
+          return this.persons.filter((p)=>{
+            return p.name.indexOf(this.keyWord) !== -1
+          })
+        }
+      },
+    })
+
+    // watch实现
+    /* const vm = new Vue({
+      el: '#root',
+      data: {
+        keyWord: '',
+        persons: [
+          { id: '001', name: '马冬梅', age: 18, sex:'女' },
+          { id: '002', name: '周冬雨', age: 19, sex:'女' },
+          { id: '003', name: '周杰伦', age: 20, sex:'男' },
+          { id: '003', name: '温兆伦', age: 21, sex:'男' },
+        ],
+        personsList: [],
+      },
+      watch: {
+        keyWord: {
+          handler(val){
+            this.personsList = this.persons.filter((p)=>{
+              return p.name.indexOf(val) !== -1
+            })
+          },
+          immediate: true,
+        }
+      }
+    }) */
+  </script>
+</body>
+
+</html>
