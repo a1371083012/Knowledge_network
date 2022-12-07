@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>回顾一个DOM操作</title>
+</head>
+
+<body>
+
+  <button id="btn">点我创建一个输入框</button>
+
+  <script>
+    const btn = document.getElementById('btn');
+    btn.onclick = ()=>{
+      const input = document.createElement('input');
+
+      //以下属性可以（在创建元素，未放在页面）提前进行设置。
+      input.className = 'demo';
+      input.value = 99;
+      input.onclick = ()=>{alert(1);}
+
+      //在将元素放置在页面上
+      document.body.appendChild(input);
+
+      //元素只有放置在页面上才能进行【聚焦】和【改变背景色】
+      input.focus();
+      input.parentElement.style.cssText = "background-color: yellow";
+    }
+  </script>
+</body>
+
+</html>
