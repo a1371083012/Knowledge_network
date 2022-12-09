@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>分析生命周期</title>
+</head>
+
+<body>
+
+  <!-- 
+
+  -->
+
+  <!-- 准备好一个容器 -->
+  <div id="root">
+    <h2 v-text="n"></h2>
+    <h2>当前的n值是：{{n}}</h2>
+    <button @click="add">点我n+1</button>
+    <button @click="bye">点我销毁vm</button>
+  </div>
+
+  <!-- 引入Vue -->
+  <script src="../js/vue.js"></script>
+  <script>
+    Vue.config.productionTip = false; //阻止 vue 在启动时生成生产提示。
+
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        n: 1,
+      },
+      methods: {
+        add(){
+          this.n++;
+        },
+        bye(){
+          this.$destroy();
+          console.log('bye');
+        }
+      },
+      beforeCreate() {
+        console.log('beforeCreate');
+      },
+      created() {
+        console.log('created');
+      },
+      beforeMount() {
+        console.log('beforeMount');
+      },
+      mounted() {
+        console.log('mounted');
+      },
+      beforeUpdate(){
+        console.log('beforeUpdate');
+      },
+      updated(){
+        console.log('updated');
+      },
+      beforeDestroy() {
+        console.log('beforeDestroy');
+      },
+      destroyed(){
+        console.log('destroyed');
+      },
+    })
+  </script>
+</body>
+
+</html>
