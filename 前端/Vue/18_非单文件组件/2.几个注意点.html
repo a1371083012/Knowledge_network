@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>几个注意点</title>
+</head>
+
+<body>
+
+  <!-- 
+    几个注意点：
+        1. 关于组件名：
+            一个单词组成：
+                第一种写法(首字母小写)：school
+                第二种写法(首字母大写)：School
+            多个单词组成：
+                第一种写法(kebab-case命名）：my-school
+                第二种写法(CamelCase命名）：MySchool（需要vue脚手架支持）
+            备注：
+                (1).组件名尽可能回避HTML中己有的元素名称，例如：h2、H2都不行。
+                (2).可以使用name配置项指定组件在开发者工具中呈现的名字。
+                
+        2. 关于组件标签：
+            第一种写法：<school></school>
+            第二种写法：<school/>
+            各注：不用使用脚手架时，<school/>会导致后续组件不能渲染。
+
+        3.一个简写方式：
+            const school = Vue.extend(options）可简写为：const school = options
+   -->
+
+  <!-- 准备好一个容器 -->
+  <div id="root">
+    <my-school></my-school>
+  </div>
+
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+  Vue.config.productionTip = false;
+
+  //第一步：创建school组件
+  const s = Vue.extend({
+    // name: 'test',
+    template:`
+      <div>
+        <h2>学校名称：{{schoolName}}</h2>
+        <h2>学校地址：{{address}}</h2>
+      </div>
+    `,
+    data(){
+      return {
+        schoolName: '北京大学',
+        address: '北京',
+      }
+    }
+  });
+
+  //创建vm
+  new Vue({
+    el: '#root',
+    data: {
+      msg: '欢迎学习Vue！'
+    },
+    components: {
+      'my-school': s,
+    }
+  })
+</script>
+
+</html>
