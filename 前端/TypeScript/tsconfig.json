@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2017" /* 编译成js的版本 */
+    "watch": true, /* 自动监测源文件的修改，不用命令行编译 */
+    "removeComments": false, /* 删除源文件中的注释，减少体积 */
+    "target": "ES2017", /* 编译成js的版本 */
+    "noImplicitAny": true, /* 不能使用隐式any声明 */
+    "strictNullChecks": true, /* 不能直接赋值null和undefined */
   }
 }
