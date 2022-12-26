@@ -25,4 +25,3 @@ function fun(callback) {
 fun((data) => {
     console.log(data);
 });
-export {};

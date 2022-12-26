@@ -22,6 +22,3 @@ function getTitle(post: Post){
 }
 
 getTitle(post);
-
-
-export{};

@@ -12,4 +12,3 @@ function getTitle(post) {
     console.log(post.title);
 }
 getTitle(post);
-export {};

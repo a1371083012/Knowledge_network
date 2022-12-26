@@ -30,5 +30,3 @@ function fun(callback: (data: string) => void){
 fun((data) => {
   console.log(data)
 });
-
-export{};
