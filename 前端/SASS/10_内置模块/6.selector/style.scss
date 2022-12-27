@@ -1,0 +1,8 @@
+@use "sass:selector"; // 调用数组插件
+
+// selector-append：合并多个值
+// selector-unify：共有元素匹配组合
+div{
+  content: selector-append(".a", ".b", ".c") + ''; // .a.b.c
+  content: selector-unify(".a", ".disabled") + ''; // .a.disabled
+}

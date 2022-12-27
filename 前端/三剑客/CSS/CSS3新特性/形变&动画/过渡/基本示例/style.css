@@ -1,0 +1,19 @@
+body{
+    background-color: black;
+}
+div
+{
+    width: 100px;
+    height: 200px;
+    background-color: rgb(231, 96, 91);
+
+    transition-property: width;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    transition-delay: 2s;
+    /* Safari */
+    -webkit-transition-property: width;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: linear;
+    -webkit-transition-delay: 2s;
+}

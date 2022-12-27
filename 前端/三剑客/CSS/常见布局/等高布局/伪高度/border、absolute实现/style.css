@@ -1,0 +1,24 @@
+body,p{
+    margin: 0;
+    padding: 0;
+}
+div{
+    position: relative;
+}
+div p:nth-of-type(2){
+    box-sizing:border-box;
+    border-left: 200px solid lightblue;
+    border-right: 300px solid lightgreen;
+}
+div p:nth-of-type(1){
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+}
+div p:nth-of-type(3){
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+}

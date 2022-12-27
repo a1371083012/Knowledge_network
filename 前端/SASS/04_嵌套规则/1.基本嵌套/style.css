@@ -1,0 +1,19 @@
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}
+.box .text {
+  font-size: 32px;
+  color: rgb(176, 255, 220);
+}
+
+/* .box{
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}
+.box .text{
+  font-size: 32px;
+  color: rgb(176, 255, 220);
+} *//*# sourceMappingURL=style.css.map */

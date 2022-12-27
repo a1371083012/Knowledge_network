@@ -1,0 +1,17 @@
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}
+.box .text1, .box .text2, .box .text3 {
+  color: aqua;
+}
+
+/* .box{
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}
+.box .text1, .box .text2, .box .text3{
+  color: aqua;
+} *//*# sourceMappingURL=style.css.map */

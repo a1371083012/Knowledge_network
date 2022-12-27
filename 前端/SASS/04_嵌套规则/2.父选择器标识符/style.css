@@ -1,0 +1,17 @@
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}
+.box:hover {
+  background-color: red;
+}
+
+/* .box{
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}
+.box:hover{
+  background-color: red;
+} *//*# sourceMappingURL=style.css.map */

@@ -1,0 +1,8 @@
+.box {
+  width: 100px;
+  height: 26px;
+  background-color: rgb(233, 160, 14);
+}
+.box::after {
+  content: "hello, world";
+}/*# sourceMappingURL=style.css.map */

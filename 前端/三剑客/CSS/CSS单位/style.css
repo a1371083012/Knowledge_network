@@ -1,0 +1,35 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.box{
+    height: 30px;
+    background-color: rgb(255, 172, 172);
+    margin: 10px 10px 10px;
+    border: 2px solid rgb(222, 100, 0);
+}
+.container1{
+    box-sizing: content-box;
+    border: 1px solid #000;
+    width: 500px;
+    font-size: 1.2em;
+}
+.container2{
+    width: 500px;
+    font-size: 1.2em;
+}
+.px{
+    width: 50px;
+}
+.per{
+    width: 50%;
+}
+.rem{
+    width: 10rem;
+}
+.em{
+    width: 10em;
+}
+.vw{
+    width: 50vw;
+}

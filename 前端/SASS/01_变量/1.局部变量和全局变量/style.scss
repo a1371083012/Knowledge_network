@@ -1,0 +1,10 @@
+$background-color: #F90; // 定义全局变量
+$width: 100px; // 定义局部变量
+.aaa{
+  $width: 200px; // 定义局部变量
+}
+.box{
+  height: 100px;
+  width: $width; // 引用局部变量
+  background-color: $background-color; // 引用全局变量
+}

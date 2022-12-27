@@ -1,0 +1,12 @@
+@use "sass:string"; // 调用字符串插件
+
+// quote() 插入值
+// string.length() 获取长度
+.box{
+  width: 100px;
+  height: string.length('11111111111111111111111111')+px;
+  background-color: rgb(233, 160, 14);
+  &::after {
+    content: quote('hello, world');
+  }
+}

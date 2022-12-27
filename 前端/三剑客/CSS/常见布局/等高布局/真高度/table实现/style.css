@@ -1,0 +1,11 @@
+body,p{
+    margin: 0;
+    padding: 0;
+}
+div{
+    display: table;
+}
+div p{
+    display: table-cell;
+    border: 1px solid #ffff00;
+}

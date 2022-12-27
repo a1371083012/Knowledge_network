@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <img src="./2.webp" alt="">
+    <svg width="700" height="700">
+        <!-- 设置底色的圆环 -->
+        <circle cx="350" cy="350" r="300"
+            fill="none" stroke="grey"
+            stroke-width="40" stroke-linecap="round"></circle>
+        <!-- 设置进度条 -->
+        <circle class="progess" transform="rotate(-90,350,350)"
+            cx="350" cy="350" r="300"
+            fill="none" stroke="red"
+            stroke-width="40" stroke-linecap="round"
+            stroke-dasharray="1800, 10000"></circle>
+        <!-- 设置文本 -->
+        <text class="text" x="350" y="350"
+            font-size="200" fill="red">1</text>
+    </svg>
+</body>
+<!-- <script src="./test.js"></script> -->
+</html>

@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.parents{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(0, 0, 0);
+}
+.child{
+    height: 300px;
+    width: 300px;
+    background-color: rgb(255, 123, 123);
+}
+
+/* #region 水平居中 */
+/* 方法一: margin */
+/* .child{
+    margin: auto;
+} */
+
+/* 方法二: position + transform */
+/* .child{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+} */
+
+/* 方法三: text-align + inline-block */
+/* .parents{
+    text-align: center;
+}
+.child{
+    display: inline-block;
+} */
+
+/* 方法四: flex */
+/* .parents{
+    display: flex;
+    justify-content: center;
+} */
+
+/* 方法五: grid */
+/* .parents{
+    display: grid;
+    grid-template: 'a b c' 1fr
+        'd e f' 1fr
+        'g h i' 1fr / 1fr 1fr 1fr;
+}
+.child{
+    grid-area: b;
+} */
+/* #endregion */
+
+
+
+
+/* #region 垂直居中 */
+/* 方法一: absolute + margin */
+/* .child{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+} */
+
+/* 方法二: table-cell */
+/* .parents{
+    display: table-cell;
+    vertical-align: middle;
+} */
+
+/* 方法三: position + transform */
+/* .child{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+} */
+
+/* 方法四: flex */
+/* .parents{
+    display: flex;
+    align-items: center;
+} */
+
+/* 方法五: grid */
+/* .parents{
+    display: grid;
+    grid-template: 'a b c' 1fr
+        'd e f' 1fr
+        'g h i' 1fr / 1fr 1fr 1fr;
+}
+.child{
+    grid-area: d;
+} */
+/* #endregion */

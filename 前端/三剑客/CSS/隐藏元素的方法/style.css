@@ -1,0 +1,47 @@
+div{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 0, 0);
+}
+
+/* 第1种：display */
+/* div{
+    display: none;
+} */
+
+/* 第2种：visibility */
+/* div{
+    visibility: hidden;
+} */
+
+/* 第3种：opacity */
+/* div{
+    opacity: 0;
+} */
+
+/* 第4种：height、border */
+/* div{
+    height: 0;
+    border: 0;
+} */
+
+/* 第5种：absolute */
+/* div{
+    position: absolute;
+    left: -999px;
+} */
+
+/* 第6种：scale */
+/* div{
+    transform: scale(0);
+} */
+
+/* 第7种：translate */
+/* div{
+    transform: translate(-999px);
+} */
+
+/* 第8种：blur */
+/* div{
+    filter: blur(999px);
+} */

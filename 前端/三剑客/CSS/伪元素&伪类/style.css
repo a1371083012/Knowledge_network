@@ -1,0 +1,83 @@
+*{
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding: 5px;
+}
+.box{
+    display: flex;
+    flex-wrap: wrap;
+}
+.container{
+    width: 110px;
+    padding: 10px;
+    border: 2px solid #f00;
+    margin: 5px;
+}
+.title{
+    text-align: center;
+    font-weight: 900;
+    font-size: 13px;
+    color: #f00;
+    margin-bottom: 10px;
+    background-color: rgb(192, 226, 255);
+}
+p{
+    text-align: center;
+    margin: 0px 20px; 
+    width: 70px;
+}
+span{
+    text-align: center;
+    margin: auto 20px;
+    width: 70px;
+    display: inline-block;
+}
+
+/* ------------------------  first 字段  ------------------------ */
+.first-child p:first-child{
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+}
+.first-of-type p:first-of-type{
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+}
+/* -----------------------  last 字段  ------------------------ */
+.last-child p:last-child{
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+}
+.last-of-type p:last-of-type{
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+}
+/* ------------------------  nth 字段  ------------------------ */
+.nth-child p:nth-child(2){
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+}
+.nth-of-type p:nth-of-type(2){
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+}
+/* ------------------------  nth-last 字段  ------------------------ */
+.nth-last-child p:nth-last-child(2){
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+}
+.nth-last-of-type p:nth-last-of-type(2){
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+}
+/* ------------------------  only 字段  ------------------------ */
+.only-child p:only-child{
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+}
+.only-of-type p:only-of-type{
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+}

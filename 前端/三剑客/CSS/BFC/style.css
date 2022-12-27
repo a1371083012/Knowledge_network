@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.flex{
+    display: flex;
+}
+.flex1, .flex2{
+    flex: .5;
+}
+.flex1{
+    background-color: rgb(185, 185, 185);
+}
+.flex2{
+    background-color: rgb(106, 106, 106);
+}
+.content1{
+    overflow: hidden;
+}
+.cube{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(255, 0, 217);
+    margin: 50px;
+}
+.container1{
+    border: 3px solid red;
+    overflow: hidden;
+}
+.container2{
+    border: 3px solid red;
+}
+.float{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    margin: 100px;
+    float: left;
+}
+
+.main1, .main2{
+    overflow: auto;
+}
+.square1, .square3{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    float: left;
+}
+.square2, .square4{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(237, 12, 0);
+}
+.square4{
+    overflow: hidden;
+}
+
+.a{
+}
+.a::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.b{
+
+}
+.d1, .d2, .d3, .d4{
+    width: 120px;
+    height: 120px;
+}
+.d1{
+    background-color: rgb(255, 0, 0);
+    float: left;
+}
+.d2{
+    background-color: rgb(94, 255, 0);
+    float: left;
+}
+.d3{
+    background-color: rgb(0, 64, 255);
+}
+.d4{
+    background-color: rgb(255, 251, 0);
+}

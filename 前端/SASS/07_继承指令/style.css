@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* 注意：如果只是用于被继承的话，可以使用占位符（%）
+  占位符未调用时不会被编译到css中 */
+.error, .box .text1 {
+  color: red;
+}
+
+.box .text2 {
+  color: rgb(0, 177, 21);
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
+}
+.box .text1 {
+  font-weight: 900;
+}
+.box .text2 {
+  font-size: 32px;
+}/*# sourceMappingURL=style.css.map */

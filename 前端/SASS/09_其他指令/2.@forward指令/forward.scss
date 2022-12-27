@@ -1,0 +1,10 @@
+@use './bootstrap' with($c1-common-font-size: 90px);
+
+.test{
+  font-size: bootstrap.$font-size;
+  color: bootstrap.$c1-color; // 使用了common中的$color
+}
+
+.box{
+  font-size: bootstrap.$c1-common-font-size;
+}

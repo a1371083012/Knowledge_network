@@ -1,0 +1,34 @@
+/* 注意：如果只是用于被继承的话，可以使用占位符（%）
+  占位符未调用时不会被编译到css中 */
+.error{
+  color: red;
+}
+%success{ // 使用占位符
+  color: rgb(0, 177, 21);
+}
+
+@mixin errorState{
+  font-weight: 900;
+  @extend .error; // 继承错误状态
+}
+
+@mixin successState{
+  font-size: 32px;
+  @extend %success; // 继承成功状态
+}
+
+.box{
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
+  .text1{
+    @include errorState;
+  }
+  .text2{
+    @include successState;
+  }
+}
+
+%box{
+  width: 100px;
+}

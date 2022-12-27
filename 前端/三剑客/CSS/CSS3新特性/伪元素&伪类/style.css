@@ -1,0 +1,48 @@
+p{
+    text-align: center;
+    margin: 5px 20px; 
+    width: 70px;
+}
+span{
+    text-align: center;
+    margin: auto 20px;
+    width: 70px;
+    display: inline-block;
+}
+
+p:first-of-type{
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+}
+
+/* p:last-of-type{
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+} */
+
+/* p:only-of-type{
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+} */
+
+/* p:only-child{
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+} */
+
+/* p:nth-child(2){
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 200, 0);
+} */
+
+input:disabled+text{
+    color: rgb(0, 98, 255);
+}
+
+input:enabled+text{
+    color: rgb(255, 0, 208);
+}
+
+input:checked+text{
+    color: rgb(255, 170, 0);
+}

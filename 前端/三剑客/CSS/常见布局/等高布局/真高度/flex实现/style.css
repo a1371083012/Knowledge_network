@@ -1,0 +1,12 @@
+body,p{
+    margin: 0;
+    padding: 0;
+}
+div{
+    display: flex;
+    flex-direction: row;
+}
+div p{
+    flex: 1;
+    border: 1px solid #ffff00;
+}

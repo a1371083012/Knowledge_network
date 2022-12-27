@@ -1,0 +1,20 @@
+@charset "UTF-8";
+/* 使用占位符 */
+.primaryButton {
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.primaryButton {
+  background-color: aqua;
+}
+
+/* 未用占位符 */
+.buttonStyle1, .errorButton {
+  font-size: 24px;
+  border-radius: 10px;
+}
+
+.errorButton {
+  background-color: red;
+}

@@ -1,0 +1,10 @@
+@function func($length) {
+  $length1: $length * 8;
+  @return $length1;
+}
+
+.box{
+  width: func(10px);
+  height: 100px;
+  background-color: orange;
+}

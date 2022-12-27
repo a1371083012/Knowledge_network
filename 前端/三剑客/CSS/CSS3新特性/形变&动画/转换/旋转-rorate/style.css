@@ -1,0 +1,10 @@
+div{
+    margin: 100px;
+    width: 200px;
+    height: 100px;
+    transform-origin: left top;
+    background-color: rgba(8, 0, 255, 0.5);
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Safari and Chrome */
+}

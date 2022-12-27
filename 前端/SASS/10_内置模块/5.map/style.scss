@@ -1,0 +1,17 @@
+@use "sass:map"; // 调用数组插件
+$font-sizes: ("small": 12px, "normal": 18px, "large": 24px);
+$padding: (top: 10px, right: 20px, bottom: 10px, left: 30px);
+
+// map-get：获取map中的某个键对应的值
+// map-has-key：判断map中某个键是否对应值
+// map-keys：获取map中的所有键
+// map-values：获取map中的所有值
+div{
+  font-size: map-get($font-sizes, "normal"); // 18px
+  @if map-has-key($padding, "right"){
+    padding-right: map-get($padding, "right");
+  }
+  &:after{
+    content: map-keys($font-sizes) + " "+ map-values($padding) + "";
+  }
+}

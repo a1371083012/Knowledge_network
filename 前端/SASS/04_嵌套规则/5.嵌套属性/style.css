@@ -1,0 +1,17 @@
+.box {
+  width: 200px;
+  height: 200px;
+  border: 4px;
+  border-style: solid;
+  border-color: orange;
+  border-right: 0;
+}
+
+/* .box{
+  width: 200px;
+  height: 200px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: orange;
+  border-right: 0;
+} *//*# sourceMappingURL=style.css.map */

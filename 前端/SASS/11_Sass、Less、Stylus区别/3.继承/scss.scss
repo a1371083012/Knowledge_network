@@ -1,0 +1,19 @@
+/* 使用占位符 */
+%buttonStyle{
+  font-size: 18px;
+  border-radius: 5px;
+}
+.primaryButton{
+  @extend %buttonStyle;
+  background-color: aqua
+}
+
+/* 未用占位符 */
+.buttonStyle1{
+  font-size: 24px;
+  border-radius: 10px;
+}
+.errorButton{
+  @extend .buttonStyle1;
+  background-color: red;
+}

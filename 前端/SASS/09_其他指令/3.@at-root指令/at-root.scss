@@ -1,0 +1,28 @@
+.parent{
+  font-size: 12px;
+  @at-root .child{
+    font-size: 14px;
+    @at-root .son{
+      font-size: 16px;
+    }
+  }
+}
+
+// 常规的@at-root跳不出@media或@support，需要使用without关键词
+// 1. all（表示所有）
+// 2. rule（表示常规css）
+// 3. media（表示media）
+// 4. supports（表示supports）
+@media screen{
+  .parent1{
+    font-size: 12px;
+    @at-root (without: all){
+      .child1{
+        font-size: 14px;
+        .son1{
+          font-size: 16px;
+        }
+      }
+    } 
+  }
+}

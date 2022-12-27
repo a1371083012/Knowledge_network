@@ -1,0 +1,19 @@
+// scss写法
+.box{
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+  &:hover{
+    background-color: red;
+  }
+}
+
+// css写法
+/* .box{
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}
+.box:hover{
+  background-color: red;
+} */

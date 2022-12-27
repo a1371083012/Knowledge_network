@@ -1,0 +1,6 @@
+$background-color: red;
+@import 'test';
+
+.box{
+  background-color: $background-color;
+}

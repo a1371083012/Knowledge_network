@@ -1,0 +1,18 @@
+/* 注意：
+  1.混合器也支持css规则和sass的父选择器标识符&
+  2.混合器支持指定传参和默认值参数
+*/
+
+ // 定义混合器
+@mixin setColor($background-color, $border-color, $color: yellow /* 默认值参数 */){
+  background-color: red ;
+  border: 5px solid $border-color;
+  color: $color
+}
+
+.box{
+  width: 200px;
+  height: 200px;
+  // 引用混合器
+  @include setColor($background-color: red /* 指定传参 */, $border-color: green);
+}

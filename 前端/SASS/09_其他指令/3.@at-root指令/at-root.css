@@ -1,0 +1,21 @@
+.parent {
+  font-size: 12px;
+}
+.child {
+  font-size: 14px;
+}
+.son {
+  font-size: 16px;
+}
+
+@media screen {
+  .parent1 {
+    font-size: 12px;
+  }
+}
+.child1 {
+  font-size: 14px;
+}
+.child1 .son1 {
+  font-size: 16px;
+}/*# sourceMappingURL=at-root.css.map */

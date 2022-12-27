@@ -1,0 +1,11 @@
+.box1{
+  height: 130px;
+  width: 130px;
+  background-color: orange;
+  @import 'test'; // 只针对.box1有效
+}
+.box2{
+  height: 130px;
+  width: 130px;
+  background-color: green;
+}

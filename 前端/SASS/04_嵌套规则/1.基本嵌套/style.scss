@@ -1,0 +1,21 @@
+// sass写法
+.box{
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+  .text{
+    font-size: 32px;
+    color: rgb(176, 255, 220);
+  }
+}
+
+// css写法
+/* .box{
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}
+.box .text{
+  font-size: 32px;
+  color: rgb(176, 255, 220);
+} */

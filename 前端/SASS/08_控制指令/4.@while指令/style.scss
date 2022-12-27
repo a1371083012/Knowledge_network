@@ -1,0 +1,10 @@
+$i: 5;
+@while $i>0{
+  @if $i%2==0 {.box#{$i}{background-color: yellow;}}
+  @else {.box#{$i}{background-color: green;}}
+  $i: $i - 1;
+}
+.box{
+  width: 100px;
+  height: 100px;
+}

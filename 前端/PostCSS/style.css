@@ -1,9 +1,20 @@
+@import './test.css';
+
+:root{
+  --mianColor:#ffc001; /* ①定义属性 */
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
-  font-size: 14px;
+  @if 3 > 5{
+    font-size: 14px;
+  }
+  @else{
+    font-size: 16px;
+  }
 }
 
 main{
@@ -12,6 +23,7 @@ main{
   height: 100vh;
   background: hsl(220deg, 10%, 5%);
   font-size: 24px;
+  color: var(--mianColor); /* ①使用属性 */
 }
 
 .boxes{
@@ -32,4 +44,14 @@ main{
   &:hover {
     background: linear-gradient(156deg, rgb(241, 46, 241) 0% , rgba(0, 13, 168, 1) 100%);
   }
+}
+
+.box1:hover{
+  background: url(./pictures/1-page1-sprite.png);
+}
+.box2:hover{
+  background: url(./pictures/2-page2-sprite.png);
+}
+.box3:hover{
+  background: url(./pictures/3-page1-sprite.png);
 }

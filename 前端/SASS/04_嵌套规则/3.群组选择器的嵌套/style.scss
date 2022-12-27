@@ -1,0 +1,19 @@
+// sass写法
+.box{
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+  .text1, .text2, .text3{
+    color: aqua;
+  }
+}
+
+// css写法
+/* .box{
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}
+.box .text1, .box .text2, .box .text3{
+  color: aqua;
+} */

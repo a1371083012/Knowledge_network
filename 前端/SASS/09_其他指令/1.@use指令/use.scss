@@ -1,0 +1,14 @@
+// @use模块引用对象@import：每个引入都是一个独立的模块，是增强的@import
+
+@use 'css/about';
+// 1. as *作用：引用不用再写模块名
+// 2. with作用：可以覆写模块中带有!default字段的属性
+@use 'uses/common' as * with($common-font-size: 20px);
+@use 'uses/common' as c1;
+@use 'uses/common' as c2;
+
+body{
+  font-size: $common-font-size;
+  color: c1.$color;
+  background-color: c2.$color;
+}

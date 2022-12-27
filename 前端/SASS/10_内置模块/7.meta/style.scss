@@ -1,0 +1,18 @@
+@use "sass:meta"; // 调用元插件
+$color: #f00;
+@mixin padding($left: 0, $top: 0, $right: 0, $bottom: 0){
+  padding: $top, $right, $bottom, $left;
+}
+
+// variable-exists(value)：检查元素是否存在，注意：value不需要带"$"
+div{
+  @if meta.global-variable-exists(color){
+    color: $color;
+  }
+  @else {
+    content: "$color不存在"
+  }
+  @if mixin-exists(padding){
+    @include padding($left: 10px, $right: 10px);
+  }
+}

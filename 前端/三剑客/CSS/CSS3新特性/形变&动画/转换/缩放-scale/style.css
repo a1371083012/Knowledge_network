@@ -1,0 +1,9 @@
+div{
+    margin: 100px;
+    width: 200px;
+    height: 100px;
+    background-color: rgb(255, 87, 87);
+    -ms-transform:scale(2); /* IE 9 */
+    -webkit-transform: scale(2); /* Safari */
+    transform: scale(2); /* 标准语法 */
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>localStorage</title>
+</head>
+<body>
+  <h2>localStorage</h2>
+  <button onclick="saveData()">点我保存一个数据</button>
+  <button onclick="readData()">点我读取一个数据</button>
+  <button onclick="deleteData()">点我删除一个数据</button>
+  <button onclick="clearData()">点我清空</button>
+  <script>
+    let num = 1
+    let str = "你好啊"
+    let arr = [1, 2, 3, 4]
+    let obj = {
+      name: "张三",
+      age: 19
+    }
+    function saveData(){
+      localStorage.setItem('data1',num);
+      localStorage.setItem('data2',str);
+      localStorage.setItem('data3',JSON.stringify(arr));
+      localStorage.setItem('data4',JSON.stringify(obj));
+    }
+    function readData(){
+      console.log(localStorage.getItem('data1'));
+      console.log(localStorage.getItem('data2'));
+      console.log(JSON.parse(localStorage.getItem('data3')));
+      console.log(JSON.parse(localStorage.getItem('data4')));
+    }
+    function deleteData(){
+      localStorage.removeItem('data1');
+    }
+    function clearData(){
+      localStorage.clear();
+    }
+  </script>
+</body>
+</html>

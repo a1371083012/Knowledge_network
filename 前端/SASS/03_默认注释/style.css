@@ -1,0 +1,7 @@
+@charset "UTF-8";
+/* 这种注释内容会出现在生成的css文件中 */
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}/*# sourceMappingURL=style.css.map */

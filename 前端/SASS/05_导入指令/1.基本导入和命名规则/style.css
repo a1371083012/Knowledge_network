@@ -1,0 +1,9 @@
+@charset "UTF-8";
+/* 命名规则：那些专门为@import命令而编写的sass文件：
+使用下划线开头命名，而引用的时候可以不写
+文件的全名，即省略文件名开头的下划线 */
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}/*# sourceMappingURL=style.css.map */

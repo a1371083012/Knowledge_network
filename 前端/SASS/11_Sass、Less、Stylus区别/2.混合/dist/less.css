@@ -1,0 +1,8 @@
+.primaryButton {
+  border: 1px solid aqua;
+  background-color: aquamarine;
+}
+.errorButton {
+  border: 1px solid orangered;
+  background-color: red;
+}

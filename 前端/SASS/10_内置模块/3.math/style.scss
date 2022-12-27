@@ -1,0 +1,9 @@
+@use "sass:math"; // 调用数学插件
+
+// math.ceil() 向上取整
+// math.$e 取数学常数e值
+div{
+  z-index: math.ceil(102.342523532); // 103
+  z-index: math.$e; // 2.7182818285
+  z-index: math.max(5, 1, 6, 8, 3); // 8
+}

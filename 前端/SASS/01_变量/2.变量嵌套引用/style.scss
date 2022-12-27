@@ -1,0 +1,8 @@
+$border-color: rgb(0, 200, 255);
+$border: 5px solid $border-color; // 变量嵌套引用
+
+.box{
+  height: 100px;
+  width: 100px;
+  border: $border;
+}

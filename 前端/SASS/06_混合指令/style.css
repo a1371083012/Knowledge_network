@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* 注意：
+  1.混合器也支持css规则和sass的父选择器标识符&
+  2.混合器支持指定传参和默认值参数
+*/
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  border: 5px solid green;
+  color: yellow;
+}/*# sourceMappingURL=style.css.map */

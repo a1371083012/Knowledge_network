@@ -1,0 +1,16 @@
+.box1 {
+  background: url(./images/1.svg) 100% no-repeat;
+}
+
+.box2 {
+  background: url(./images/2.svg) 100% no-repeat;
+}
+
+.box3 {
+  background: url(./images/3.svg) 100% no-repeat;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+}/*# sourceMappingURL=style.css.map */

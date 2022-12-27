@@ -1,0 +1,13 @@
+@use "sass:list"; // 调用数组插件
+
+// length：取长度（空格分隔）
+// index：找位置（非下标）
+// append：将后面的元素添加到前面
+// nth：找到某一个值
+div{
+  z-index: length(12px); // 1
+  z-index: length(12px 5px 8px); // 3
+  z-index: index(a b c d, c); // 3
+  padding: append(10px 20px, 30px); // 10px 20px 30px
+  color: nth($list: red blue green, $n: 2); // blue
+}

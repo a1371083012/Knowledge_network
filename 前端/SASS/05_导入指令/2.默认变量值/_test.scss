@@ -1,0 +1,7 @@
+// !default作用：如果父级在引入该scss前声明了该属性，则该属性在这里不生效
+$background-color: orange !default;
+
+.box{
+  width: 200px;
+  height: 200px;
+}

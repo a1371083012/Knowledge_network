@@ -1,0 +1,10 @@
+.buttonStyle(@backgroundColor: aquamarine, @borderColor: aqua){
+  border: 1px solid @borderColor;
+  background-color: @backgroundColor;
+}
+.primaryButton{
+  .buttonStyle();
+}
+.errorButton{
+  .buttonStyle(red, orangered);
+}

@@ -1,0 +1,11 @@
+// 引入原生css方式：
+// ①：被导入文件的名字以.css结尾；
+// ②：被导入文件的名字是一个URL地址（比如http://www.sass.hk/css/css.css），由此可用谷歌字体API提供的相应服务；
+// ③：被导入文件的名字是CSS的url()值。
+
+@import 'css'; // 引入了原生css
+
+.box{
+  height: 130px;
+  width: 130px;
+}

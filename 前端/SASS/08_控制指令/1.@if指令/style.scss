@@ -1,0 +1,17 @@
+@mixin setColor($state){
+  height: 100px;
+  width: 100px;
+  @if $state == 'success' {background-color: green;}
+  @else if $state == 'warning' {background-color: orange;}
+  @else {background-color: red;}
+}
+
+.box1{
+  @include setColor('success')
+}
+.box2{
+  @include setColor('warning')
+}
+.box3{
+  @include setColor('danger')
+}

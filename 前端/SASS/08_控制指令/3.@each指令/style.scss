@@ -1,0 +1,9 @@
+@each $no in 1, 2, 3 {
+  .box#{$no} {
+    background: url(./images/#{$no}.svg) 100% no-repeat;
+  }
+}
+.box{
+  width: 100px;
+  height: 100px;
+}

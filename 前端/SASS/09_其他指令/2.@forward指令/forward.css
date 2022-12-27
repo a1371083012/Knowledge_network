@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.box {
+  color: red;
+} /* 注意：如果既要转发也要引用，建议将引用编写在转发下面 */
+.container {
+  color: skyblue;
+}
+
+.test {
+  font-size: 16px;
+  color: skyblue;
+}
+
+.box {
+  font-size: 90px;
+}/*# sourceMappingURL=forward.css.map */

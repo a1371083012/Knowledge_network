@@ -1,0 +1,51 @@
+/* 
+  "include" 用来指定哪些ts文件需要被编译
+    路径：** 表示任意目录
+          * 表示任意文件
+  "exclude" 不需要被编译的文件目录
+    默认值：["node_modules", "bower_components", "jspm_packages"];
+  "extends" 合并配置（不常用）
+  "files" 指定哪些文件需要被编译
+*/
+
+/* 
+  "compilerOptions" 编译器选项
+    "target" 指定编译的ES版本，默认ES3
+      可选值：'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'
+    "module" 指定要使用的模块化的规范
+      可选值：'none', 'commonjs', 'amd', 'system', 'umd', 'es6', 'es2015', 'es2020', 'es2022', 'esnext', 'node16', 'nodenext'
+    "lib" 指定项目中使用的库（一般情况不需要改）
+      可选值（只展示部分）：es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', ...
+    "outDir" 指定编译后文件所在的目录
+    "outFile" 将代码合并为一个文件
+
+    "allowJs" 是否对js文件进行编译
+    "checkJs" 是否检查js代码是否符合语法规范
+    "removeComments" 是否删除源文件中的注释，减少体积
+    "noEmit" 是否不生成编译后的文件
+    "noEmitOnError" 是否当有错误的时候不生成编译后的文件
+
+    "strict" 所有严格检查的总开关
+    "alwaysStrict" 是否设置编译后的文件使用严格模式
+    "noImplicitAny" 是否设置允许隐式any类型
+    "noImplicitThis" 是否设置允许不明确类型的this
+    "strictNullChecks" 是否设置严格的检查空值
+*/
+
+{
+  "include": [ /* 指定哪些ts文件需要被编译 */
+    "./src/**/*"
+  ],
+  "exclude": [ /* 指定哪些ts文件不需要被编译 */
+    "./static/*"
+  ],
+  "compilerOptions": {
+    "outDir": "./dist", /* 指定编译后文件所在的目录 */
+    // "outFile": "./dist/app.js", /* 将代码合并为一个文件 */
+    "watch": true, /* 自动监测源文件的修改，不用命令行编译 */           /* 相当于-w命令 */
+    "removeComments": false, /* 删除源文件中的注释，减少体积 */
+    "target": "ES2017", /* 编译成js的ES版本 */
+    "noImplicitAny": true, /* 不能使用隐式any声明 */
+    "strictNullChecks": true, /* 不能直接赋值null和undefined */
+  }
+}

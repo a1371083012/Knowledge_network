@@ -1,0 +1,10 @@
+// through：包括start和end
+// to：包括start，不包括end
+
+@for $i from 1 through 3{
+  .box#{$i}{
+    height: 100px;
+    width: 100px;
+    background-color: orange;
+  }
+}

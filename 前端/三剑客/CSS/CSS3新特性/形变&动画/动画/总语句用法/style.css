@@ -1,0 +1,13 @@
+div{
+    width: 200px;
+    height: 200px;
+    border: 1px #000 solid;
+}
+div:hover {
+    animation: rainbow 1s linear 1s 3 forwards normal;
+}
+@keyframes rainbow {
+    0% { background: #c00; }
+    50% { background: yellow; }
+    100% { background: yellowgreen; }
+}

@@ -1,0 +1,14 @@
+.box1 {
+  height: 130px;
+  width: 130px;
+  background-color: orange;
+}
+.box1 .text {
+  color: aqua;
+}
+
+.box2 {
+  height: 130px;
+  width: 130px;
+  background-color: green;
+}/*# sourceMappingURL=style.css.map */

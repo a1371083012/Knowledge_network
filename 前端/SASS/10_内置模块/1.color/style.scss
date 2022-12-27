@@ -1,0 +1,108 @@
+@use "sass:color"; // 调用颜色插件
+
+body{
+  background-color: rgb(66, 66, 66);
+}
+p{
+  margin: 0;
+  color: #fff;
+}
+%box{
+  width: 100%;
+  height: 20px;
+  margin-bottom: 10px;
+}
+.box1{
+  @extend %box;
+  background-color: rgb(233, 160, 14);
+}
+.box2{
+  @extend %box;
+  background-color: lighten(rgb(233, 160, 14), 30%);
+}
+.box3{
+  @extend %box;
+  background-color: darken(rgb(233, 160, 14), 30%);
+}
+.box4{
+  @extend %box;
+  background-color: saturate(rgb(233, 160, 14), 30%);
+}
+.box5{
+  @extend %box;
+  background-color: opacify(rgba(233, 160, 14, .3), .3);
+}
+.box6{
+  @extend %box;
+  background-color: transparentize(rgba(233, 160, 14, .5), .2);
+}
+.box7{
+  @extend %box;
+  background-color: adjust-hue(rgb(233, 160, 14), 30deg);
+}
+.box8{
+  @extend %box;
+  background-color: color.adjust(rgb(233, 160, 14), $green: 60);
+}
+
+/* 返回alpha通道 */
+@debug color.alpha(#e1d7d2); // 1
+@debug color.opacity(rgb(210, 225, 221, 0.4)); // 0.4
+@debug alpha(opacity=20); // alpha(opacity=20)
+/* 返回HWB白度 */
+@debug color.whiteness(#e1d7d2); // 82.3529411765%
+@debug color.whiteness(white); // 100%
+@debug color.whiteness(black); // 0%
+/* 返回HWB黑度 */
+@debug color.blackness(#e1d7d2); // 11.7647058824%
+@debug color.blackness(white); // 0%
+@debug color.blackness(black); // 100%
+/* 返回绿色通道 */
+@debug color.green(#e1d7d2); // 215
+@debug color.green(white); // 255
+@debug color.green(black); // 0
+/* 返回红色通道 */
+@debug color.red(#e1d7d2); // 225
+@debug color.red(white); // 255
+@debug color.red(black); // 0
+/* 返回蓝色通道 */
+@debug color.blue(#e1d7d2); // 210
+@debug color.blue(white); // 255
+@debug color.blue(black); // 0
+/* 将颜色的一个或多个属性设置为新值 */
+@debug color.change(#6b717f, $red: 100); // #64717f
+@debug color.change(#d2e1dd, $red: 100, $blue: 50); // #64e132
+@debug color.change(#998099, $lightness: 30%, $alpha: 0.5); // rgba(85, 68, 85, 0.5)
+/* 返回RGB补码 */
+@debug color.complement(#6b717f); // #7f796b  Hue 222deg becomes 42deg.
+@debug color.complement(#d2e1dd); // #e1d2d6  Hue 164deg becomes 344deg.
+@debug color.complement(#036); // #663300  Hue 210deg becomes 30deg.
+/* 返回与亮度相同的灰色 */
+@debug color.grayscale(#6b717f); // #757575
+@debug color.grayscale(#d2e1dd); // #dadada
+@debug color.grayscale(#036); // #333333
+/* 返回具有给定色调、白度和黑度以及给定 Alpha 通道的颜色 */
+@debug color.hwb(210, 0%, 60%); // #036
+@debug color.hwb(34, 89%, 5%); // #f2ece4
+@debug color.hwb(210 0% 60% / 0.5); // rgba(0, 51, 102, 0.5)
+/* 返回一个不带引号的字符串，该字符串以 Internet Explorer 的 -ms-filter 属性所需的格式表示 */
+@debug color.ie-hex-str(#b37399); // #FFB37399
+@debug color.ie-hex-str(#808c99); // #FF808C99
+@debug color.ie-hex-str(rgba(242, 236, 228, 0.6)); // #99F2ECE4
+/* 返回反数或负数 */
+@debug color.invert(#b37399); // #4c8c66
+@debug color.invert(black); // white
+@debug color.invert(#550e0c, 20%); // #663b3a
+/* 返回 HSL 亮度 */
+@debug color.lightness(#e1d7d2); // 85.2941176471%
+@debug color.lightness(#f2ece4); // 92.1568627451%
+@debug color.lightness(#dadbdf); // 86.4705882353%
+/* 返回混合颜色 */
+@debug color.mix(#036, #d2e1dd); // #698aa2
+@debug color.mix(#036, #d2e1dd, 75%); // #355f84
+@debug color.mix(#036, #d2e1dd, 25%); // #9eb6bf
+@debug color.mix(rgba(242, 236, 228, 0.5), #6b717f); // rgba(141, 144, 152, 0.75)
+/* 流畅地缩放 的一个或多个属性。 */
+@debug color.scale(#6b717f, $red: 15%); // #81717f
+@debug color.scale(#d2e1dd, $lightness: -10%, $saturation: 10%); // #b3d4cb
+@debug color.scale(#998099, $alpha: -40%); // rgba(153, 128, 153, 0.6)

@@ -1,0 +1,9 @@
+div{
+    margin: 100px;
+    width: 200px;
+    height: 100px;
+    background-color: rgb(255, 87, 87);
+    -ms-transform: skew(30deg,30deg); /* IE 9 */
+    -webkit-transform: skew(30deg,30deg); /* Safari */
+    transform: skew(30deg,30deg); /* 标准语法 */
+}

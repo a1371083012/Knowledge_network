@@ -1,0 +1,10 @@
+@mixin buttonStyle($backgroundColor: aquamarine, $borderColor: aqua){
+  border: 1px solid $borderColor;
+  background-color: $backgroundColor;
+}
+.primaryButton{
+  @include buttonStyle();
+}
+.errorButton{
+  @include buttonStyle(red, orangered);
+}

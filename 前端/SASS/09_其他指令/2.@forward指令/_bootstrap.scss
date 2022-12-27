@@ -1,0 +1,15 @@
+// @forward：转发模块（只转发，不引用）
+// as：转发后指定名
+// show：指定哪些属性需要转发
+// hide：指定哪些属性不转发
+
+/* 注意：如果既要转发也要引用，建议将引用编写在转发下面 */
+@forward 'forwards/common' as c1-* with($common-font-size: 32px !default);
+@forward 'forwards/common' as c2-* hide aaa;
+@use 'forwards/common';
+
+$font-size: 16px;
+
+.container{
+  color: common.$color;
+}
