@@ -2,6 +2,7 @@ const os = require("os"); // nodejs核心模块，直接使用
 const path  = require('path'); // nodejs核心模块，专门用来处理路径问题
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 // cpu核数
 const threads = os.cpus().length;
@@ -14,8 +15,12 @@ module.exports = {
     // 所有打包文件的输出路径
     // __dirname nodejs的变量，代表当前文件的文件夹目录
     path: undefined,
-    // 文件名
-    filename: 'static/js/main.js',
+    // 入口文件打包输出文件名
+    filename: "static/js/[name].js",
+    // 给打包输出的其他文件命名
+    chunkFilename: "static/js/[name].chunk.js",
+    // 图片、字体等通过type:asset处理资源命名方式
+    assetModuleFilename: "static/media/[hash:10][ext][query]",
   },
   // 加载器
   module: {
@@ -66,20 +71,20 @@ module.exports = {
                 maxSize: 10 * 1024 // 小于10kb的图片会被base64处理
               }
             },
-            generator: {
-              // 输入图片名称
-              // [hash:10] hash值取前10位
-              filename: "static/images/[hash:10][ext][query]"
-            }
+            // generator: {
+            //   // 输入图片名称
+            //   // [hash:10] hash值取前10位
+            //   filename: "static/images/[hash:10][ext][query]"
+            // }
           },
           // 其他资源配置（字体、图标、音频、视频、文档）
           {
             test: /\.(ttf|woff2?|mp3|mp4|avi|mov)$/,
             type: "asset/resource",
-            generator: {
-              // 输出名称
-              filename: "static/media/[hash:10][ext][query]"
-            }
+            // generator: {
+            //   // 输出名称
+            //   filename: "static/media/[hash:10][ext][query]"
+            // }
           },
           // js的配置
           {
@@ -96,6 +101,8 @@ module.exports = {
                 loader: "babel-loader",
                 options: {
                   cacheDirectory: true, // 开启babel编译缓存
+                  cacheCompression: false, // 缓存文件不要压缩
+                  plugins: ["@babel/plugin-transform-runtime"], // 减少代码体积
                 },
               },
             ],
@@ -117,6 +124,39 @@ module.exports = {
       template: path.resolve(__dirname, "../public/index.html"),
     }),
   ],
+  // 压缩的操作
+  optimization: {
+    minimizer: [
+      // 压缩图片
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminGenerate,
+          options: {
+            plugins: [
+              ["gifsicle", { interlaced: true }],
+              ["jpegtran", { progressive: true }],
+              ["optipng", { optimizationLevel: 5 }],
+              [
+                "svgo",
+                {
+                  plugins: [
+                    "preset-default",
+                    "prefixIds",
+                    {
+                      name: "sortAttrs",
+                      params: {
+                        xmlnsOrder: "alphabetical",
+                      },
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+      }),
+    ]
+  },
   // 开发服务器：不会输出资源，在内存中编译打包的
   devServer: {
     host: "localhost", // 启动服务器域名

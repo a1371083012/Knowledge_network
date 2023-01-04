@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_02_codesplit=self.webpackChunk_02_codesplit||[]).push([[52],{52:(e,c,s)=>{function u(...e){return e.reduce(((e,c)=>e+c),0)}s.d(c,{S:()=>u})}}]);
