@@ -37,3 +37,17 @@ promise.then(() => {
 
 // 添加includes代码
 console.log([1, 2, 3].includes(2));
+
+// 启用serviceWorker
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((registration) => {
+        console.log("SW registered: ", registration);
+      })
+      .catch((registrationError) => {
+        console.log("SW registration failed: ", registrationError);
+      });
+  });
+}
