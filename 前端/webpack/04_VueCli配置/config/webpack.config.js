@@ -99,6 +99,13 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: "vue-loader",
+        options: {
+          // 开启缓存
+          cacheDirectory: path.resolve(
+            __dirname,
+            "node_modules/.cache/vue-loader"
+          ),
+        },
       },
     ],
   },
@@ -152,7 +159,8 @@ module.exports = {
     Components({
       resolvers: [
         ElementPlusResolver({
-          importStyle: "sass", // 自定义主题
+          // 自定义主题，引入sass
+          importStyle: "sass",
         }),
       ],
     }),
@@ -229,10 +237,12 @@ module.exports = {
       name: (entrypoint) => `runtime~${entrypoint.name}`,
     },
   },
+  // webpack解析模块加载选项
   resolve: {
+    // 自动补全文件扩展名
     extensions: [".vue", ".js", ".json"],
+    // 路径别名
     alias: {
-      // 路径别名
       "@": path.resolve(__dirname, "../src"),
     },
   },

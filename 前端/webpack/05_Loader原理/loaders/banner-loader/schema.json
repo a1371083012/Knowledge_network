@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "author": {
+      "type": "string"
+    },
+    "age": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": false
+}
