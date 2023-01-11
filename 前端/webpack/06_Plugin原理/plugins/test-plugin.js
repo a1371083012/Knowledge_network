@@ -19,6 +19,7 @@ class TestPlugin {
       console.log("TestPlugin environment");
     });
 
+    // 由文档可知，emit是异步串行钩子
     compiler.hooks.emit.tap('TestPlugin', (compilation) => {
       console.log("TestPlugin emit 111");
     });
@@ -39,13 +40,31 @@ class TestPlugin {
       });
     });
 
-    compiler.hooks.make.tapAsync('TestPlugin', (compilation) => {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          console.log("TestPlugin emit 333");
-          resolve();
-        }, 1000);
-      });
+    // 由文档可知，make是异步并行钩子 AsyncParallerHook
+    compiler.hooks.make.tapAsync('TestPlugin', (compilation, callback) => {
+      // // 需要再compilation hooks触发前注册才能使用
+      // compilation.hook.seal.tap('TestPlugin', () => {
+      //   console.log("TestPlugin seal");
+      // })
+
+      setTimeout(() => {
+        console.log("TestPlugin make 111");
+        callback();
+      }, 3000);
+    });
+
+    compiler.hooks.make.tapAsync('TestPlugin', (compilation, callback) => {
+      setTimeout(() => {
+        console.log("TestPlugin make 222");
+        callback();
+      }, 3000);
+    });
+
+    compiler.hooks.make.tapAsync('TestPlugin', (compilation, callback) => {
+      setTimeout(() => {
+        console.log("TestPlugin make 333");
+        callback();
+      }, 3000);
     });
   }
 }
