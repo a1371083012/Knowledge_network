@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jwt</title>
+</head>
+<body>
+  <button onclick="login()">登录</button>
+  <button onclick="outlogin()">退出登录</button>
+  <button onclick="afterlogin()">普通请求</button>
+</body>
+<script src="./jquery-3.6.1.min.js"></script>
+<script>
+  
+  // 登录
+  function login(){
+    if(localStorage.getItem('token')==null){
+      $.ajax({
+        type: 'POST',
+        url: 'http://127.0.0.1:3000/login',
+        dataType: 'json',
+        data: { username: "张三", password: "abc123" },
+        success: (data) => { 
+          localStorage.setItem('token', data.token);
+          console.log(data);
+        },
+      })
+    }else{
+      console.log('你已经登录，请勿重新登录');
+    }
+  }
+
+  // 退出登录
+  function outlogin(){
+    localStorage.removeItem('token');
+  }
+
+  // 普通请求
+  function afterlogin(){
+    $.ajax({
+      type: 'GET',
+      url: 'http://127.0.0.1:3000/afterlogin',
+      dataType: 'json',
+      data: {},
+      headers: { 
+        "Authorization":"Bearer " + localStorage.getItem('token'),
+      },
+      success: function(data){
+        console.log(data);
+      },
+    })
+  }
+</script>
+</html>
