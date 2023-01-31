@@ -71,7 +71,7 @@
     </div>
 
     <!-- 事件的默认行为立即执行，无需等待事件回调执行完毕 -->
-    <ul @whell="demo" class="list">
+    <ul @wheel.passive="demo" class="list">
       <li>1</li>
       <li>2</li>
       <li>3</li>

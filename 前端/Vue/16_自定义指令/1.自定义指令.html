@@ -10,7 +10,7 @@
 
   <!-- 
       需求1：定义一个v-big指令，和v-text功能类似，但会把鄉定的数值放大10倍。
-      需求2：定义一个v-fbind指令，和v-bind功能类似，但可以让其所鄉定的input元素默认获取焦点。
+      需求2：定义一个v-fbind指令，和v-bind功能类似，但可以让其所绑定的input元素默认获取焦点。
 
       自定义指令总结：
           一、定义语法：
@@ -52,18 +52,18 @@
 
     //定义全局指令
     Vue.directive('fbind', {
-          //指令与元素成功绑定时（一上来）
-          bind(element, binding){
-            element.value = binding.value;
-          },
-          //指令所在元素被插入页面时
-          inserted(element, binding){
-            element.focus();
-          },
-          //指令所在模板被重新解析时
-          update(element, binding){
-            element.value = binding.value;
-          }
+      //指令与元素成功绑定时（一上来）
+      bind(element, binding){
+        element.value = binding.value;
+      },
+      //指令所在元素被插入页面时
+      inserted(element, binding){
+        element.focus();
+      },
+      //指令所在模板被重新解析时
+      update(element, binding){
+        element.value = binding.value;
+      }
     })
     
     let vm = new Vue({
