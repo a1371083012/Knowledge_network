@@ -25,7 +25,7 @@ export default {
   //简单声明接收
   props: ['name', 'sex', 'age'], 
 
-  //接收的同事对数据进行类型限制
+  //接收的同时对数据进行类型限制
   // props: {
   //   name: String,
   //   age: Number,

@@ -1,8 +1,6 @@
 <template>
   <div>
     <h1>当前求和为：{{sum}}</h1>
-    <h3>当前求和放大10倍为：{{bigSum}}</h3>
-    <h3>我在{{school}}，学习{{subject}}</h3>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -16,49 +14,31 @@
 </template>
 
 <script>
-import {mapState, mapGetters} from 'vuex'
 export default {
   name: 'Count',
   data(){
     return{
       n: 1, //用户选择的数字
+      sum: 0, //当前的和
     }
-  },
-  computed:{
-    // 借助mapState生成计算属性，从state中读取数据。（对象写法）
-    // ...mapState({sum: 'sum', school: 'school', subject: 'subject'}),
-
-    // 借助mapState生成计算属性，从state中读取数据。（数组写法）
-    ...mapState(['sum', 'school', 'subject']),
-
-   /****************************************************************/
-
-    // 借助mapGetters生成计算属性，从getter中读取数据。（对象写法）
-    // ...mapGetters({bigSum: 'bigSum'}),
-
-    // 借助mapGetters生成计算属性，从getter中读取数据。（数组写法）
-    ...mapGetters(['bigSum']),
   },
   methods: {
     increment(){
-      this.$store.commit('ADD', this.n);
+      this.sum += this.n;
     },
     decrement(){
-      this.$store.commit('REDUCE', this.n);
+      this.sum -= this.n;
     },
-
-    /****************************************************************/
-
     incrementOdd(){
-      this.$store.dispatch('addOdd', this.n);
+      if(this.sum%2){
+        this.sum += this.n;
+      }
     },
     incrementWait(){
-      this.$store.dispatch('addWait', this.n);
+      setTimeout(()=>{
+        this.sum += this.n;
+      }, 500)
     },
-  },
-  mounted(){
-    const x = mapState({he: 'sum', xuexiao: 'school', xueke: 'subject'});
-    console.log(x);
   }
 }
 </script>

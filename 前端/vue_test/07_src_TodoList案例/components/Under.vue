@@ -18,7 +18,7 @@ export default {
   methods: {
     remove(){
       if(confirm('确认清除已完成吗？'))
-      this.clearAllTodo();
+        this.clearAllTodo();
     }
   },
   computed: {
@@ -27,7 +27,7 @@ export default {
     },
     doneTotal(){
       /* 使用reduce方法 */
-      return this.todos.reduce((p, e) => e.done?p+1:p, 0);
+      return this.todos.reduce((p, e) => e.done ? p+1 : p, 0);
 
       /* 使用filter方法 */
       // return this.todos.filter(e => e.done).length

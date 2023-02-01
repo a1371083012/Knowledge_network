@@ -9,7 +9,7 @@
 
   export default {
     name: 'App',
-    components: { Count },
+    components: { Count }
   }
 </script>
 

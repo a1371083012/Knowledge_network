@@ -1,5 +1,8 @@
 <template>
   <ul class="todo-main">
+    <!-- 
+      :info、:checkTodo、:deleteTodo都是给子组件Item的
+     -->
     <Item
       v-for="todo in todos" 
       :key="todo.id" 

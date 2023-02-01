@@ -29,7 +29,7 @@
 
 ## vue.config.js配置文件
 
-1. 使用vue inspect > output.js可以查看到vue脚手架的默认配置。
+1. 使用`vue inspect > output.js`可以查看到vue脚手架的默认配置。
 2. 使用vue.config.js可以对脚手架进行个性化定制，详情见：https://cli.vuejs.org/zh
 
 ## ref属性
@@ -90,26 +90,32 @@
 
 2. 本质：包含install方法的一个对象，install的第一个参数是vue，第二个以后的参数是插件使用者传递的数据。
 
-3. 定义插件：
-
+3. 定义插件：plugins.js
    ```javascript
-    对象.install = function (Vue, options) {
-   	// 1. 添加全局过滤器
-     Vue.filter(....)
-   
-     // 2. 添加全局指令
-     Vue.directive(....)
-   
-     // 3. 配置全局混入（合）
-     Vue.mixin(....)
-   
-     // 4. 添加实例方法
-     Vue.prototype.$myMethod = function () {...}
-     Vue.prototype.$myProperty = xxxx
+    export default{
+      install(Vue, options){
+        // 1. 添加全局过滤器
+        Vue.filter(....)
+      
+        // 2. 添加全局指令
+        Vue.directive(....)
+      
+        // 3. 配置全局混入（合）
+        Vue.mixin(....)
+      
+        // 4. 添加实例方法
+        Vue.prototype.$myMethod = function () {...}
+        Vue.prototype.$myProperty = xxxx
+      }
     }
    ```
 
-4. 使用插件：`Vue.use()`
+4. 使用插件：
+
+   ```javascript
+    import plugins from './plugins'
+    Vue.use(plugins)
+   ```
 
 ## scoped样式
 1. 作用：让样式在局部生效，防止冲突。
@@ -153,7 +159,7 @@
          <Demo ref="demo"/>
            ......
          mounted(){
-           this.$ref.demo.$on('test', this,test)
+           this.$ref.demo.$on('test', this.test)
          }
          ```
 
@@ -349,10 +355,6 @@ module.exports = {
       
               <template v-slot:center>
                 	<div>html结构2</div>
-              </template>
-            
-              <template #footer>
-                	<div>html结构3</div>
               </template>
           </Category>
       子组件中：

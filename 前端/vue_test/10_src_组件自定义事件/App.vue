@@ -5,7 +5,7 @@
     <School :getSchoolName="getSchoolName"/>
 
     <!-- 通过父组件给子组件绑定一个自定义事件实现：子给父传递数据（第一种写法，使用@或v-on） -->
-    <!-- <Student @test="getStudentName" @test2="demo"/> -->
+    <!-- <Student @test="getStudentName"/> -->
 
     <!-- 通过父组件给子组件绑定一个自定义事件实现：子给父传递数据（第二种写法，使用ref） -->
     <Student ref="student" @click.native="show"/>
@@ -29,19 +29,19 @@
       getSchoolName(name){
         console.log('App收到了学生名：', name);
       },
+      // 第一种写法
       // getStudentName(name, ...params){
       //   console.log('App收到了学生名：', name, params);
       //   this.studentName = name;
       // },
-      demo(){
-        console.log('demo事件被触发了');
-      },
+      // 触发原生点击事件
       show(){
         console.log(123);
       }
     },
     mounted(){
-      // 绑定自定义事件
+      // 第二种写法：绑定自定义事件
+      // 注意：这里必须使用箭头函数，不然this指向会指向Student实例。
       this.$refs.student.$on('test', (name, ...params) => {
         console.log('App收到了学生名：', name, params);
         this.studentName = name;
