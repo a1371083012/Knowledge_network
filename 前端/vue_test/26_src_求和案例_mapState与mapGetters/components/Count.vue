@@ -37,6 +37,7 @@ export default {
     // },
     
     // 借助mapState生成计算属性，从state中读取数据。（对象写法）
+    // 不能简写，因为value是字符串
     // ...mapState({sum: 'sum', school: 'school', subject: 'subject'}),
 
     // 借助mapState生成计算属性，从state中读取数据。（数组写法）
