@@ -413,15 +413,11 @@ module.exports = {
          ```
 
 ## Vuex
-
 ### 1.概念
-
   在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。
-
 ### 2.何时使用？
 
 ​	多个组件需要共享数据时
-
 ### 3.搭建vuex环境
 
  1. 创建文件：`src/store/index.js`
@@ -464,7 +460,6 @@ module.exports = {
       store
     })
     ```
-
 ### 4.基本使用
 
 1. 初始化数据、配置`actions`、配置`mutations`，操作文件`store.js`
@@ -513,7 +508,6 @@ module.exports = {
 3. 组件中修改vuex中的数据：`$store.dispatch('action中的方法名',数据)`或者`$store.commit('mutations中的方法名',数据)`
 
    > 备注：若没有网络请求或其他业务逻辑，组件中也可以越过actions，即不写`dispatch`，直接编写`commit`
-
 ### 5.getters的使用
 
 1. 概念：当state中的数据需要经过加工后再使用时，可以使用getters加工。
@@ -537,7 +531,6 @@ module.exports = {
    ```
 
 3. 组件中读取数据：`$store.getters.bigSum`
-
 ### 6.四个map方法的使用
 
 1. **mapState方法：**用于帮助我们映射`state`中的数据为计算属性
@@ -578,17 +571,316 @@ module.exports = {
 
 4. **mapMutations方法：**用于帮助我们生成与`mutations`对话的方法，即：包含`$store.commit(xxx)`的函数
 
-   ```javascript
-   methods:{
-       // 借助mapMutations生成：incrementOdd、incrementWait（对象写法）
-       ...mapMutations({increment: 'addOdd', incrementWait: 'addWait'}),
-   
-       // 借助mapMutations生成：incrementOdd、incrementWait（数组写法）
-       ...mapMutations(['addOdd', 'addWait']),
-   }
-   ```
+    ```javascript
+    methods:{
+        // 借助mapMutations生成：incrementOdd、incrementWait（对象写法）
+        ...mapMutations({increment: 'ADD', decrement: 'REDUCE'}),
+    
+        // 借助mapMutations生成：incrementOdd、incrementWait（数组写法）
+        ...mapMutations(['ADD', 'REDUCE']),
+    }
+    ```
 
-   
+
 > 备注：mapActions与mapMutations使用时，若需要传递参数需要：在模板中绑定事件时传递好参数，否则参数是事件对象。
+### 7.模块化+命名空间
+1. 目的：让代码更好维护，让多种数据分类更加明确。
+2. 修改`store.js`
+```javascript
+  const countAbout = {
+    namespaced: true, //开启命名空间
+    actions: {...},
+    mutations: {...},
+    state: { sum: 1,},
+    getters: {
+      bigSum(state){
+        return state.sum * 10;
+      }
+    },
+  }
 
-## 2
+  const personAbout = {
+    namespaced: true, //开启命名空间
+    actions: {...},
+    mutations: {...},
+    state: {...},
+  }
+
+  const store = new Vuex.Store({
+    modules: {
+      countAbout,
+      personAbout
+    }
+  })
+```
+3. 开启命名空间后，组件中读取state数据：
+```javascript
+  //方式一：自己直接读取
+  this.$store.state.personAbout.list
+  //方式二：借助mapState读取
+  ...mapState('countAbout', ['sum', 'school', 'subject']),
+```
+4. 开启命名空间后，组件中读取getters数据：
+```javascript
+  //方式一：自己直接读取
+  this.$store.getters['personAbout/firstPersonName']
+  //方式二：借助mapState读取
+  ...mapGetters('countAbout', ['bigSum']),
+```
+5. 开启命名空间后，组件中调用dispatch：
+```javascript
+  //方式一：自己直接dispatch
+  this.$store.dispatch('personAbout/addPersonWang', personObj)
+  //方式二：借助mapActions
+  ...mapActions('countAbout', {incrementOdd: 'addOdd', incrementWait: 'addWait'}),
+```
+6. 开启命名空间后，组件中调用commit：
+```javascript
+  //方式一：自己直接dispatch
+  this.$store.commit('personAbout/ADD_PERSON', personObj)
+  //方式二：借助mapActions
+  ...mapMutations('countAbout', {increment: 'ADD', decrement: 'REDUCE'}),
+```
+
+## 路由
+1. 理解：一个路由（route）就是一组映射关系（key-value），多个路由需要路由器（router）进行管理。
+2. 前端路由：key是路径，value是组件。
+### 1.基本使用
+1. 安装vue-router，命令：`npm i vue-router`，注意分清版本vue2对应vue-router3，vue3对应vue-router4。
+2. 引用插件：`import VueRouter from "vue-router"`，应用插件：`Vue.use(VueRouter)`
+3. 编写router配置项：
+  ```javascript
+    // 引入VueRouter
+    import VueRouter from "vue-router";
+    // 引入组件
+    import About from "../components/About";
+    import Home from '../components/Home';
+
+    //创建并默认暴露一个路由器
+    export default new VueRouter({
+      routes:[
+        {
+          path:'/about',
+          component: About
+        },
+        {
+          path:'/home',
+          component: Home
+        }
+      ]
+    });
+  ```
+4. 实现切换（active-class可配置高亮样式）
+  ```html
+    <router-link active-class="active" to="/about">About</router-link>
+  ```
+5. 指定展示位置
+  ```html
+    <router-view></router-view>
+  ```
+### 2.几个注意点
+1. 路由组件通常存放在`pages`文件夹，一般组件通常存放在`components`文件夹中。
+2. 通过切换，“隐藏”了的路由组件，默认是被销毁掉的，需要的时候再去挂载。
+3. 每个组件都有自己的`$route`属性，里面存储着自己的路由信息。
+4. 整个应用只有一个router，可以通过组件的`$router`属性获取到。
+### 3.多级路由（路由嵌套）
+1. 配置路由规则，使用children配置项：
+  ```javascript
+    routes:[
+    {
+      path:'/about',
+      component: About
+    },
+    {
+      path:'/home',
+      component: Home,
+      children: [ // 通过children配置子级路由
+        {
+          path: 'news', //此处一定不要写：/news
+          component: News,
+        },
+        {
+          path: 'messages', //此处一定不要写：/messages
+          component: Messages,
+        }
+      ]
+    }
+  ]
+  ```
+2. 跳转（要写完整路径）：
+  ```html
+    <router-link to="/home/news">News</router-link>
+  ```
+### 4.路由的query参数
+1. 传递参数
+  ```html
+    <!-- 跳转路由并携带query参数，to的字符串写法 -->
+    <router-link :to="`/home/messages/detail?id=${m.id}&title=${m.title}`">{{m.title}}</router-link>
+    
+    <!-- 跳转路由并携带query参数，to的对象写法 -->
+    <router-link :to="{
+      path: '/home/messages/detail',
+      query:{
+        id: m.id,
+        title: m.title
+      }
+    }">
+      {{m.title}}
+    </router-link>
+  ```
+2. 接收参数
+  ```javascript
+    $route.query.id
+    $route.query.title
+  ```
+### 5.命名路由
+1. 作用：可以简化路由的跳转
+2. 如何使用
+   1. 给路由命名：
+    ```javascript
+      {
+        path:'/demo',
+        component: Demo,
+        children: [
+          {
+            path: 'test',
+            component: Test,
+            children: [
+              {
+                name: 'hello', //给路由命名
+                path: 'welcome',
+                component: Hello,
+              }
+            ]
+          }
+        ]
+      }
+    ```
+   2. 简化跳转：
+    ```html
+      <!-- 简化前，需要写完整的路径 -->
+      <router-link to="/demo/test/welcome">跳转</router-link>
+
+      <!-- 简化后，需要通过名字跳转 -->
+      <router-link :to="{name: 'hello'}">跳转</router-link>
+
+      <!-- 简化写法配合传递参数 -->
+      <router-link
+        :to="{
+          name: 'hello',
+          query: {
+            id: 666,
+            title: '你好'
+          }
+        }"
+      >跳转</router-link>
+    ```
+### 6.路由的params参数
+1. 配置路由，声明接收params参数
+  ```javascript
+  {
+    path:'/home',
+    component: Home,
+    children: [
+      {
+        path: 'news',
+        component: News,
+      },
+      {
+        path: 'messages',
+        component: Messages,
+        children: [
+          {
+            name: 'xiangqing',
+            path: 'detail/:id/:title', //使用占位符声明接收params参数
+            component: Detail,
+          }
+        ]
+      }
+    ]
+  }
+  ```
+2. 传递参数
+  ```html
+  <!-- 跳转路由并携带params参数，to的字符串写法 -->
+  <router-link :to="`/home/messages/detail/${m.id}/${m.title}`">{{m.title}}</router-link>&nbsp;&nbsp;
+  
+  <!-- 跳转路由并携带params参数，to的对象写法 -->
+  <!-- 不能使用path写法 -->
+  <router-link 
+    :to="{
+      name: 'xiangqing',
+      params:{
+        id: m.id,
+        title: m.title
+      }
+    }"
+  >
+    {{m.title}}
+  </router-link>
+  ```
+  > 特别注意：路由携带params参数时，若使用to的对象写法，则不能使用path配置项，必须使用name配置！
+3. 接收参数：
+  ```javascript
+    $route.params.id
+    $route.params.title
+  ```
+### 7.路由的props配置
+作用：让路由组件更方便的收到参数
+  ```javascript
+    {
+      name: 'xiangqing',
+      path: 'detail/:id/:title',
+      component: Detail,
+      
+      // props的第一种写法，值为对象，该对象中的所有key-value都会以props的形式传给Detail组件。
+      // props: {a: 900}
+
+      // props的第二种写法，值为布尔值，若布尔值为真，就会把该路由组件收到的所有params参数，以props的形式传给Detail组件。
+      // props: true
+
+      // props的第三种写法，值为函数
+      props($route){
+        return{
+          id: $route.query.id,
+          title: $route.query.title,
+        }
+      }
+      
+    }
+  ```
+### 8.`<router-link>`的replace属性
+1. 作用：控制路由跳转时操作浏览器历史记录的模式
+2. 浏览器的历史记录有两种写入方式：分别为`push`和`replace`，`push`是追加历史记录，`replace`是替换当前记录。路由跳转时候默认为`push`
+3. 如何开启`replace`模式：`<router-link replace ......>News</router-link>`
+### 9.编程式路由导航
+1. 作用：不借助`<router-link>`实现路由跳转，让路由跳转更加灵活
+2. 具体编码：
+  ```javascript
+  this.$router.push({
+    name: 'xiangqing',
+      query:{
+        id: m.id,
+        title: m.title
+      }
+  })
+  this.$router.replace({
+    name: 'xiangqing',
+      query:{
+        id: m.id,
+        title: m.title
+      }
+  })
+  this.$router.forward(); //前进
+  this.$router.back(); //后退
+  this.$router.go(n); //可前进也可后退
+  ```
+### 10.缓存路由组件
+1. 作用：让不展示的路由组件保持挂载，不被销毁。
+2. 具体编码：
+```html
+  <keep-alive include="News">
+    <router-view></router-view>
+  </keep-alive>
+```
+### 11

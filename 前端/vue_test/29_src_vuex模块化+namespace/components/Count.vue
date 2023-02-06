@@ -26,6 +26,8 @@ export default {
     }
   },
   // 问题一：模块化后，store中有互相交集怎么处理？
+  // 问题二：不用...mapState()写法的坑？
+  // 问题三：当在actions和mutations中需要其他操作时怎么办？
   computed:{
     // 借助mapState生成计算属性，从state中读取数据。（数组写法）
     ...mapState('countAbout', ['sum', 'school', 'subject']),
