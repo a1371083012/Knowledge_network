@@ -883,4 +883,76 @@ module.exports = {
     <router-view></router-view>
   </keep-alive>
 ```
-### 11
+### 11.两个新的生命周期钩子
+1. 作用：路由组件所独有的两个钩子，用于捕获路由组件的激活状态。
+2. 具体名字：
+    1. `activated`路由组件被激活时触发。
+    2. `deactivated`路由组件失活时触发。
+### 12.路由守卫
+1. 作用：对路由进行权限控制
+2. 分类：全局守卫、独享守卫、组件内守卫
+3. 全局守卫：
+```javascript
+// 全局前置路由守卫 —— 初始化的时候被调用、每次路由切换之前被调用
+router.beforeEach((to, from, next)=>{
+  console.log('前置路由守卫',to,from);
+  if(to.meta.isAuth){ // 判断当前路由是否需要鉴权
+    if(localStorage.getItem('school')==='atguigu'){ // 权限控制的具体规则
+      next(); // 放行
+    }else{
+      alert('无权查看！');
+    }
+  }else{
+    next(); // 放行
+  }
+})
+
+// 全局后置路由守卫 —— 初始化的时候被调用、每次路由切换之后被调用
+router.afterEach((to, from)=>{
+  console.log('后置路由守卫',to,from);
+  document.title = to.meta.title || '硅谷系统'; // 修改网页的title
+})
+```
+4. 独享守卫：
+```javascript
+beforeEnter(to, from, next){
+  if(to.meta.isAuth){ // 判断是否需要鉴权
+    if(localStorage.getItem('school')==='atguigu'){
+      next();
+    }else{
+      alert('学校名不对，无权查看！');
+    }
+  }else{
+    next();
+  }
+}
+```
+5. 组件内守卫：
+```javascript
+// 进入守卫：通过路由规则，进入该组件时被调用
+beforeRouteEnter(to, from, next){
+},
+// 离开守卫：通过路由规则，离开该组件时被调用
+beforeRouteLeave (to, from, next){
+},
+```
+### 13.路由器的两种工作模式
+1. 对于一个url来说，什么是hash值？—— #及其后面的内容就是hash值。
+2. hash值不会包含在HTTP请求中，即：hash值不会带给服务器。
+3. hash模式：
+    1. 地址中永远带着#号，不美观。
+    2. 若以后将地址通过第三方手机app分享，若app校验严格，则地址会被标记为不合法。
+    3. 兼容性较好。
+4. history模式：
+    1. 地址干净，美观。
+    2. 兼容性和hash模式相比略差。
+    3. 应用部署上线时需要后端人员支持，解决刷新页面服务端404的问题。
+
+## VueUI组件库
+1. 移动端组件库
+    1. Vant [https://youzan.github.io/vant](https://youzan.github.io/vant)
+    2. Cube UI [https://didi.github.io/cube-ui](https://didi.github.io/cube-ui)
+    3. Mint UI [https://mint-ui.github.io](https://mint-ui.github.io)
+2. PC端组件库
+    1. Element UI [https://element.eleme.cn](https://element.eleme.cn)
+    2. IView UI [https://www.iviewui.com](https://www.iviewui.com)
