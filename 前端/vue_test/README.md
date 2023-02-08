@@ -859,17 +859,17 @@ module.exports = {
   ```javascript
   this.$router.push({
     name: 'xiangqing',
-      query:{
-        id: m.id,
-        title: m.title
-      }
+    query:{
+      id: m.id,
+      title: m.title
+    }
   })
   this.$router.replace({
     name: 'xiangqing',
-      query:{
-        id: m.id,
-        title: m.title
-      }
+    query:{
+      id: m.id,
+      title: m.title
+    }
   })
   this.$router.forward(); //前进
   this.$router.back(); //后退

@@ -1,32 +1,51 @@
 <template>
   <div>
-    <button>原生的按钮</button>
-    <input type="text">
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-    <el-date-picker
-      type="date"
-      placeholder="选择日期">
-    </el-date-picker>
-    <el-row>
-      <el-button icon="el-icon-search" circle></el-button>
-      <el-button type="primary" icon="el-icon-s-check" circle></el-button>
-      <el-button type="success" icon="el-icon-check" circle></el-button>
-      <el-button type="info" icon="el-icon-message" circle></el-button>
-      <el-button type="warning" icon="el-icon-star-off" circle></el-button>
-      <el-button type="danger" icon="el-icon-delete" circle></el-button>
-    </el-row>
+    <div class="row">
+      <Banner/>
+    </div>
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-2">
+        <div class="list-group">
+          <!--vue中借助router=link标签实现路由的切换-->
+          <router-link class="list-group-item" active-class="active" to="/about">About</router-link>
+          <router-link class="list-group-item" active-class="active" to="/home">Home</router-link>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="panel">
+          <div class="panel-body">
+            <!--router-view确定视图的位置-->
+            <!-- <keep-alive> -->
+              <router-view></router-view>
+            <!-- </keep-alive> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1>{{ obj.name }}</h1>
+    <h1>{{ obj.sex }}</h1>
+    <button @click="btn">按钮</button>
   </div>
 </template>
 
 <script>
+  import Banner from './components/Banner'
+
   export default {
     name: 'App',
+    components: {Banner},
+    data(){
+      return{
+        obj: {
+          name: '小明',
+        }
+      }
+    },
+    methods: {
+      btn(){
+        // this.obj.sex='男'
+        this.$set(this.obj, 'sex', '男')
+      }
+    }
   }
 </script>
