@@ -108,7 +108,7 @@ npm run dev
 
 - 语法:
 
-  ```
+  ```javascript
   const xxx = ref(initValue)
   ```
 
@@ -165,7 +165,7 @@ npm run dev
 
     - Reflect：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect
 
-      ```
+      ```javascript
       new Proxy(data, {
           // 拦截读取属性值
           get (target, prop) {
@@ -366,7 +366,7 @@ npm run dev
 
 - 实现防抖效果：
 
-  ```
+  ```vue
   <template>
   	<input type="text" v-model="keyword">
   	<h3>{{keyword}}</h3>
@@ -413,11 +413,13 @@ npm run dev
 
 - 套路：父组件有一个 `provide` 选项来提供数据，后代组件有一个 `inject` 选项来开始使用这些数据
 
+- 缺点：不能实现兄弟之间通信
+
 - 具体写法：
 
   1. 祖组件中：
 
-     ```
+     ```javascript
      setup(){
          ......
          let car = reactive({name:'奔驰',price:'40万'})
@@ -428,7 +430,7 @@ npm run dev
 
   2. 后代组件中：
 
-     ```
+     ```javascript
      setup(props,context){
          ......
          const car = inject('car')
@@ -466,7 +468,7 @@ npm run dev
 
 - 什么是Teleport？—— `Teleport` 是一种能够将我们的<span style="color: orangered">**组件html结构**</span>移动到指定位置的技术。
 
-  ```
+  ```html
   <teleport to="移动位置">
   	<div v-if="isShow" class="mask">
   		<div class="dialog">
@@ -485,14 +487,14 @@ npm run dev
 
   - 异步引入组件
 
-    ```
+    ```javascript
     import {defineAsyncComponent} from 'vue'
     const Child = defineAsyncComponent(()=>import('./components/Child.vue'))
     ```
 
   - 使用`Suspense`包裹组件，并配置好`default` 与 `fallback`
 
-    ```
+    ```html
     <template>
         <div class="app">
             <h3>我是App组件</h3>
@@ -507,3 +509,104 @@ npm run dev
         </div>
     </template>
     ```
+
+# 六、其他
+
+## 1.全局API的转移
+
+- Vue 2.x 有许多全局 API 和配置。
+
+  - 例如：注册全局组件、注册全局指令等。
+
+    ```javascript
+    //注册全局组件
+    Vue.component('MyButton', {
+      data: () => ({
+        count: 0
+      }),
+      template: '<button @click="count++">Clicked {{ count }} times.</button>'
+    })
+    
+    //注册全局指令
+    Vue.directive('focus', {
+      inserted: el => el.focus()
+    }
+    ```
+
+- Vue3.0中对这些API做出了调整：
+
+  - 将全局的API，即：`Vue.xxx`调整到应用实例（`app`）上
+
+    | 2.x 全局 API（`Vue`）    | 3.x 实例 API（`app`）                          |
+    | ------------------------ | ---------------------------------------------- |
+    | Vue.config.xxxx          | app.config.xxxx                                |
+    | Vue.config.productionTip | <span style="color: orangered">**移除**</span> |
+    | Vue.component            | app.component                                  |
+    | Vue.directive            | app.directiv                                   |
+    | Vue.mixin                | app.mixin                                      |
+    | Vue.use                  | app.use                                        |
+    | Vue.prototype            | app.config.globalProperties                    |
+
+    
+
+## 2.其他改变
+
+- data选项应始终被声明为一个函数。
+
+- 过度类名的更改：
+
+  - Vue2.x写法
+
+    ```css
+    .v-enter,
+    .v-leave-to {
+      opacity: 0;
+    }
+    .v-leave,
+    .v-enter-to {
+      opacity: 1;
+    }
+    ```
+
+  - Vue3.x写法
+
+    ```css
+    .v-enter-from,
+    .v-leave-to {
+      opacity: 0;
+    }
+    
+    .v-leave-from,
+    .v-enter-to {
+      opacity: 1;
+    }
+    ```
+
+- <span style="color: orangered">**移除**</span>keyCode作为 v-on 的修饰符，同时也不再支持`config.keyCodes`
+
+- <span style="color: orangered">**移除**</span>`v-on.native`修饰符
+
+  - 父组件中绑定事件
+
+    ```html
+    <my-component
+      v-on:close="handleComponentEvent"
+      v-on:click="handleNativeClickEvent"
+    />
+    ```
+
+  - 子组件中声明自定义事件
+
+    ```vue
+    <script>
+      export default {
+        emits: ['close']
+      }
+    </script>
+    ```
+
+- <span style="color: orangered">**移除**</span>过滤器（filter）
+
+  > 过滤器虽然这看起来很方便，但它需要一个自定义语法，打破大括号内表达式是 “只是 JavaScript” 的假设，这不仅有学习成本，而且有实现成本！建议用方法调用或计算属性去替换过滤器。
+
+- ......
