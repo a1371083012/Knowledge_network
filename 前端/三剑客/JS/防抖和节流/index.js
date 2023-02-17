@@ -10,13 +10,11 @@ debounceButton.onclick = debounce(say, 1000);
 function debounce(fn, delay) {
     let timeout = null;
     return function(){
-        let _this = this;
-        let args = arguments;
         // 每次点击时，都会清除上一次点击时产生的定时器
         clearTimeout(timeout);
         // 重新设置定时器，覆盖上一次的定时器
         timeout = setTimeout(() => {
-            fn.apply(_this, args);
+            fn.apply(this, arguments);
         }, delay);
     }
 }
@@ -31,12 +29,10 @@ function throttle1(fn, delay) {
     // 默认锁是打开的
     let lock = true;
     return function(){
-        let _this = this;
-        let args = arguments;
         // 如果锁是打开的，则可以继续执行函数
         if(lock){
             setTimeout(() => {
-                fn.apply(_this, args);
+                fn.apply(this, arguments);
                 // 函数执行完成，将锁打开
                 lock = true;
             }, delay);
@@ -52,15 +48,13 @@ function throttle2(fn, delay) {
     // 定义一个值为0的时间戳
     let time = 0;
     return function(){
-        let _this = this;
-        let args = arguments;
         // 获取现在的时间戳
         let now = Date.now();
         // 当【现在时间戳】与【前一段时间戳】差值大于【节流时间】时，代表间隔已过，可以执行函数
         if(now - time > delay){
             // 更新【前一段时间戳】
             time = now;
-            fn.apply(_this, args);
+            fn.apply(this, arguments);
         }
     }
 }
