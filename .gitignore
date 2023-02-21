@@ -3,6 +3,8 @@
 node_modules/
 /dist
 
+*.mp4
+
 # local env file
 .env.local
 .env.*.local
