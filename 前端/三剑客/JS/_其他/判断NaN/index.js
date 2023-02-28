@@ -13,7 +13,7 @@ console.log(isNaN(str));    // true
 // 封装判断
 console.log("封装判断：");
 function IsNaN(e){
-    return isNaN(e)&&typeof e == "string";
+    return isNaN(e) && typeof e == "number";
 }
 console.log(IsNaN(empty));  // false
 console.log(IsNaN(under));  // false

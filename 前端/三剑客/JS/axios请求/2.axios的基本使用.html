@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./libs/axios.min.js"></script>
+  <script>
+    // 发送AJAX请求
+    axios({
+      // 请求类型
+      method: 'GET',
+      // URL
+      url: 'http://localhost:8001/getMethod',
+    }).then((response)=>{
+      console.log(response);
+    })
+  </script>
+</body>
+</html>

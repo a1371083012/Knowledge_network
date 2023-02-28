@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./libs/axios.min.js"></script>
+  <script>
+    // request
+    axios.request({
+      method: 'GET',
+      url: 'http://localhost:8001/getMethod',
+    }).then((response)=>{
+      console.log(response);
+    })
+
+
+    // get
+    axios.get('http://localhost:8001/getMethod')
+    .then((response)=>{
+      console.log(response);
+    })
+
+
+    // post
+    axios.post('http://localhost:8001/postMethod', {name: '张三'})
+    .then((response)=>{
+      console.log(response);
+    })
+  </script>
+</body>
+</html>
