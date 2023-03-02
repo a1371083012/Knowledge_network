@@ -9,6 +9,33 @@ import News from '../pages/News'
 import Messages from '../pages/Messages'
 import Detail from '../pages/Detail'
 
+// 先把VueRouter原型对象的push先保存一份
+let originPush = VueRouter.prototype.push
+// 重写push方法
+// 第一个参数：告诉原来push方法，往哪里跳转（传递哪些参数）
+VueRouter.prototype.push = function(location, resolve, reject){
+  if(resolve || reject){
+    originPush.call(this, location, resolve, reject)
+  }else{
+    originPush.call(this, location, ()=>{}, ()=>{})
+  }
+}
+
+// 先把VueRouter原型对象的push先保存一份
+let originReplace = VueRouter.prototype.replace
+// 重写replace方法
+// 第一个参数：告诉原来push方法，往哪里跳转（传递哪些参数）
+VueRouter.prototype.replace = function(location, resolve, reject){
+  if(resolve || reject){
+    originReplace.call(this, location, resolve, reject)
+  }else{
+    originReplace.call(this, location, ()=>{}, ()=>{})
+  }
+}
+
+
+
+
 //创建并默认暴露一个路由器
 export default new VueRouter({
   routes:[
@@ -32,15 +59,7 @@ export default new VueRouter({
             {
               name: 'xiangqing',
               path: 'detail',
-              // params传参
-              // path: 'detail/:id/:title',
               component: Detail,
-              // props的第一种写法，值为对象，该对象中的所有key-value都会以props的形式传给Detail组件。
-              // props: {a: 1, b: 'hello'}
-
-              // props的第二种写法，值为布尔值，若布尔值为真，就会把该路由组件收到的所有params参数，以props的形式传给Detail组件。
-              // props: true
-
               // props的第三种写法，值为函数
               props($route){
                 return{

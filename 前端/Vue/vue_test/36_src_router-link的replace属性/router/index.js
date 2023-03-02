@@ -31,7 +31,7 @@ export default new VueRouter({
           children: [
             {
               name: 'xiangqing',
-              path: 'detail/:id/:title',
+              path: 'detail',
               component: Detail,
               // props的第三种写法，值为函数
               props($route){

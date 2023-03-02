@@ -26,16 +26,9 @@
 
 <script>
   import Banner from './components/Banner'
-  import axios from 'axios'
 
   export default {
     name: 'App',
     components: {Banner},
-    mounted(){
-      axios.get('http://localhost:8001/getMethod')
-      .then((response)=>{
-        console.log(response);
-      })
-    }
   }
 </script>
