@@ -1,8 +1,7 @@
 <template>
   <!-- 导航栏 -->
   <Header></Header>
-  <!-- 内容 -->
-  <!-- <router-view></router-view> -->
+  <Home></Home>
 </template>
 
 <script lang="ts" setup>
