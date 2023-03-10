@@ -2,9 +2,9 @@
   <Header></Header>
 	<router-view v-slot="{ Component, route }">
 		<transition :name="'fade'" mode="out-in">
-			<keep-alive include="Home">
+			<!-- <keep-alive include="Home"> -->
 				<component :is="Component" class="bodyView"/>
-			</keep-alive>
+			<!-- </keep-alive> -->
 		</transition>
 	</router-view>
 </template>
@@ -15,7 +15,7 @@
 
 <style lang="scss" scoped>
 	.bodyView{
-		height: calc(100vh - 40px);
+		min-height: calc(100vh - 40px);
 		// overflow: hidden;
 	}
 

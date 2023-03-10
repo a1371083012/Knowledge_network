@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { useStore } from 'vuex'
-import { getToken } from '@/utils/auto.js'
+import { getToken } from '@/utils/auth.js'
 const store = useStore()
 
 // 1. 利用axios对象的方法create，去创建一个axios实例

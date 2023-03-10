@@ -21,6 +21,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/Navigation.vue'),
     meta: {title: '导航', },
   },
+  {
+    path:'/articles',
+    component: () => import('@/views/Articles.vue'),
+    meta: {title: '文章', },
+  },
 ]
 
 const router = createRouter({
