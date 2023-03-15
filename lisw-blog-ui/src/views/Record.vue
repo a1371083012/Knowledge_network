@@ -2,6 +2,7 @@
   <div id="recordView">
     <div class="container-card">
       <el-card class="box-card">
+        <el-button type="success" class="publish" @click="router.push('/publish')">发布</el-button>
         <CardItem v-for="o in 20" :key="o" class="text item"></CardItem>
         <div class="card-page">
           <el-pagination
@@ -22,8 +23,10 @@
 <script lang="ts" setup>
   import { computed, ref } from 'vue'
   import { useStore } from 'vuex'
+  import { useRouter } from 'vue-router'
   import CardItem from '@/components/CardItem.vue'
-  let store = useStore()
+  const store = useStore()
+  const router = useRouter()
   const currentPage1 = ref(5)
   const handleSizeChange = (val: number) => {
     console.log(`${val} items per page`)
@@ -46,8 +49,11 @@
       justify-content: center;
       padding: 15px 0px;
     }
+    .publish{
+      width: 100%;
+    }
   }
   :deep(.el-card__body){
-    padding: 0px 20px;
+    padding: 10px 20px 0px;
   }
 </style>

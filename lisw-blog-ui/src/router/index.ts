@@ -22,9 +22,9 @@ const routes: Array<RouteRecordRaw> = [
     meta: {title: '导航', },
   },
   {
-    path:'/articles',
-    component: () => import('@/views/Articles.vue'),
-    meta: {title: '文章', },
+    path:'/publish',
+    component: () => import('@/views/Publish.vue'),
+    meta: {title: '发布', },
   },
 ]
 

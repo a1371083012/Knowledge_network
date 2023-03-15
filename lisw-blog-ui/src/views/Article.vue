@@ -1,5 +1,5 @@
 <template>
-  
+  <div id="boardView"></div>
 </template>
 
 <script lang="ts" setup>

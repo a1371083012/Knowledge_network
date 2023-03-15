@@ -1,9 +1,11 @@
 <template>
-  <editor
-    v-model="myValue"
-    :init="init"
-    @click="onClick">
-  </editor>
+  <div class="Tinymce">
+    <editor
+      v-model="myValue"
+      :init="init"
+      @click="onClick">
+    </editor>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -34,7 +36,7 @@
   import 'tinymce/plugins/help'
   const props = defineProps({
     // 默认的富文本内容
-    value: {
+    content: {
       type: String,
       default: ''
     },
@@ -54,14 +56,15 @@
     }
   })
   const emit = defineEmits(["onClick", "input"])
-  let myValue = ref(props.value)
+  let myValue = ref(props.content)
   let init = reactive({
     language_url: `${props.baseUrl}/tinymce/langs/zh_CN.js`, // 语言包的路径，具体路径看自己的项目，文档后面附上中文js文件
     language: "zh_CN", //语言
     skin_url: `${props.baseUrl}/tinymce/skins/ui/oxide`,
     // skin_url: 'tinymce/skins/ui/oxide-dark', // 暗色系
     convert_urls: false,
-    height: 300,
+    height: 800,
+    width: '100%',
     // content_css（为编辑区指定css文件）,加上就不显示字数统计了
     // content_css: `${this.baseUrl}tinymce/skins/content/default/content.css`,
     // （指定需加载的插件）
@@ -81,29 +84,20 @@
   })
 
   onMounted(()=>{
-    console.log(window)
     tinymce.init({
       // language_url: `${props.baseUrl}/tinymce/langs/zh_CN.js`
     })
   })
-
   // 添加相关的事件，可用的事件参照文档=> https://github.com/tinymce/tinymce-vue => All available events
   // 需要什么事件可以自己增加
   function onClick (e: any) {
     emit('onClick', e, tinymce)
   }
-  // 可以添加一些自己的自定义事件，如清空内容
-  function clear () {
-    myValue.value = ''
-  }
-
-  watch(() => props.value, (newValue)=>{
-    myValue.value = newValue
-  })
-  watch(() => myValue, (newValue)=>{
-    emit('input', newValue)
-  })
 </script>
 <style scoped>
-
+  .Tinymce{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>

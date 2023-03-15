@@ -20,7 +20,7 @@ import { useRouter } from 'vue-router'
 let router = useRouter()
 function cardClick(event: any, url: string){
   // console.log(url);
-  router.push('/articles')
+  router.push('/publish')
 }
   
 </script>
