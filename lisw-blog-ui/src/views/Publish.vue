@@ -12,14 +12,47 @@
     </div>
     <!-- 内容 -->
     <div class="content">
-      <tinymce @onClick="onClick" ref="abc"/>
+      <tinymce :value="content" @getContent="getContent"/>
     </div>
     <!-- 配置项 -->
     <div class="options">
-      
-      <button>获取内容</button>
+      <div class="optionsContent">
+        <div class="optionRow">
+          <el-tooltip raw-content content="<strong>文章头部位置展示</strong><ul><li>设置合适的标签，能方便分类检索</li></ul>" placement="top-start">
+            <div class="optionName">文章标签<QuestionFilled style="width: 1em;"/></div>
+          </el-tooltip>
+          <el-tag
+            v-for="tag in dynamicTags"
+            :key="tag"
+            style="user-select: none"
+            class="mx-1 tag"
+            closable
+            effect="plain"
+            @close="handleClose(tag)"
+            size="large"
+          >{{ tag }}</el-tag>
+          <el-popover placement="bottom" :width="380" trigger="hover" popper-class="customTag">
+            <template #reference>
+              <el-button class="button-new-tag ml-1">+ 添加文章标签</el-button>
+            </template>
+            <template #default>
+              <el-form
+                ref="ruleFormRef"
+                :model="ruleForm"
+                status-icon
+                :rules="rules"
+                class="demo-ruleForm"
+              >
+                <el-form-item prop="pass">
+                  <el-input v-model="ruleForm.pass" autocomplete="off" placeholder="自定义标签，Enter键入确定"/>
+                </el-form-item>
+              </el-form>
+              推荐标签
+            </template>
+          </el-popover>
+        </div>
+      </div>
     </div>
-
     <!-- 底部栏 -->
     <div class="publishbar">
       <a class="backTop" href="#PublishView">回到顶部 Δ</a>
@@ -32,32 +65,43 @@
 </template>
 
 <script lang="ts" setup>
-  import { onMounted, ref, toRaw, watch, getCurrentInstance } from 'vue'
+  import { ref, reactive } from 'vue'
   import Tinymce from '@/components/Tinymce/index.vue'
-  import { Promotion, List } from '@element-plus/icons-vue'
-  const content = "";
-  const title = ref("")
-  const abstract = ref("")
-  const abc = ref(null);
-  let aa: any;
+  import { Promotion, List, QuestionFilled } from '@element-plus/icons-vue'
+  import type { FormInstance, FormRules } from 'element-plus'
+  const content = ref('')
+  const title = ref('')
+  const abstract = ref('')
+  const dynamicTags = ref(['Tag 1', 'Tag 2', 'Tag 3'])
+  const ruleFormRef = ref<FormInstance>()
 
-  // 获取页面的实例对象
-  const pageInstance = getCurrentInstance();
-  console.log(pageInstance);
-  
-  // 获取dom节点对象
-  onMounted(()=>{
-
-    console.log(pageInstance.refs.abc);
+  const ruleForm = reactive({
+    pass: '',
+    checkPass: '',
+    age: '',
   })
-  
 
+const validatePass = (rule: any, value: any, callback: any) => {
+  if (value === '') {
+    callback(new Error('Please input the password'))
+  } else {
+    if (ruleForm.checkPass !== '') {
+      if (!ruleFormRef.value) return
+      ruleFormRef.value.validateField('checkPass', () => null)
+    }
+    callback()
+  }
+}
+
+const rules = reactive<FormRules>({
+  pass: [{ validator: validatePass, trigger: 'blur' }],
+})
 
   // 发布
   function publish () {
     console.log(title.value)
     console.log(abstract.value)
-    console.log(aa.activeEditor.getContent())
+    console.log(content.value)
 
   }
 
@@ -66,11 +110,20 @@
 
   }
 
-  // 鼠标单击的事件
-  function onClick (e: any, editor: any) {
-    aa = editor
-    console.log(editor.activeEditor.getContent())
+  // 获取到内容
+  const getContent = (v: string) => {
+    content.value = v
   }
+
+  const addTag = (e: any) =>{
+    console.log(e.target.value);
+  }
+
+  // 移除标签
+  const handleClose = (tag: string) => {
+    dynamicTags.value.splice(dynamicTags.value.indexOf(tag), 1)
+  }
+
   
 </script>
 
@@ -134,7 +187,38 @@
     .options{
       height: 100px;
       margin: 20px 0px 80px;
-      background-color: rgb(255, 234, 0);
+      background-color: white;
+      border-radius: 5px;
+      .optionsContent{
+        padding: 20px;
+      }
+      .optionRow{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      /* #region 文章标签 */
+      .optionName{
+        display: flex;
+        user-select: none;
+        margin-right: 20px;
+      }
+      .tag{
+        margin: 0px 5px;
+      }
+      .button-new-tag{
+        margin-left: 5px;
+      }
+      .customTag{
+        input{
+          width: 100%;
+          border: none;
+          &:focus{
+            outline: none;
+          }
+        }
+      }
+      /* #endregion */
     }
   }
   .publishbar{
@@ -158,5 +242,12 @@
     .publish{
       margin-right: 20px;
     }
+  }
+</style>
+
+<!-- 气泡框的样式 -->
+<style lang="scss">
+  .el-popover.customTag {
+
   }
 </style>

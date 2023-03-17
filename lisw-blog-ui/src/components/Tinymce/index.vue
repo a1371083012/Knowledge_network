@@ -1,11 +1,5 @@
 <template>
-  <div class="Tinymce">
-    <editor
-      v-model="myValue"
-      :init="init"
-      @click="onClick">
-    </editor>
-  </div>
+  <editor v-model="myValue" :init="init"></editor>
 </template>
 
 <script lang="ts" setup>
@@ -36,7 +30,7 @@
   import 'tinymce/plugins/help'
   const props = defineProps({
     // 默认的富文本内容
-    content: {
+    value: {
       type: String,
       default: ''
     },
@@ -55,8 +49,6 @@
       default: 'bold italic underline strikethrough | fontsizeselect | formatselect | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent blockquote | undo redo | link unlink code lists table image media | removeformat | fullscreen preview'
     }
   })
-  const emit = defineEmits(["onClick", "input"])
-  let myValue = ref(props.content)
   let init = reactive({
     language_url: `${props.baseUrl}/tinymce/langs/zh_CN.js`, // 语言包的路径，具体路径看自己的项目，文档后面附上中文js文件
     language: "zh_CN", //语言
@@ -82,22 +74,24 @@
       console.log(failure)
     }
   })
+  const emits = defineEmits(["getContent"])
+  let myValue = ref(props.value)
+  //监听外部传递进来的的数据变化
+  watch(() => props.value, () => {
+      myValue.value = props.value
+      emits("getContent", myValue.value)
+    }
+  )
+  //监听富文本中的数据变化
+  watch(() => myValue.value, () => {
+      emits("getContent", myValue.value)
+    }
+  )
+
 
   onMounted(()=>{
-    tinymce.init({
-      // language_url: `${props.baseUrl}/tinymce/langs/zh_CN.js`
-    })
+    tinymce.init({})
   })
-  // 添加相关的事件，可用的事件参照文档=> https://github.com/tinymce/tinymce-vue => All available events
-  // 需要什么事件可以自己增加
-  function onClick (e: any) {
-    emit('onClick', e, tinymce)
-  }
 </script>
 <style scoped>
-  .Tinymce{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 </style>
